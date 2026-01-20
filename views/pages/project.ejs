@@ -1,97 +1,177 @@
 <!-- Project Hero Section -->
 <section class="section project-hero">
     <div class="container">
-        <div class="section-header animate-on-scroll">
-            <span class="code-comment">// case_study/<%= project.slug %></span>
-            <h1 class="section-title"><%= project.title %></h1>
-            <p class="section-subtitle"><%= project.description %></p>
-        </div>
-        <div class="project-tech-tags animate-on-scroll">
-            <% project.technologies.forEach(tech => { %>
-                <span class="tech-tag"><%= tech %></span>
-            <% }) %>
+        <div class="project-hero-grid">
+            <!-- Business-friendly overview -->
+            <div class="project-hero-content animate-on-scroll">
+                <span class="project-category-badge"><%= project.category || 'Case Study' %></span>
+                <h1 class="project-title"><%= project.title %></h1>
+                <p class="project-lead"><%= project.description %></p>
+
+                <!-- Quick impact summary -->
+                <div class="project-impact-summary">
+                    <% if (project.results && project.results.length > 0) { %>
+                        <% project.results.slice(0, 2).forEach(result => { %>
+                            <div class="impact-item">
+                                <span class="impact-value"><%= result.value %></span>
+                                <span class="impact-label"><%= result.metric %></span>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- Technical reference -->
+            <div class="project-hero-code animate-on-scroll">
+                <div class="code-block-mini">
+                    <div class="code-block-header">
+                        <span class="code-block-filename"><%= project.slug %>.ts</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-comment">// case_study/<%= project.slug %></span>
+<span class="syntax-keyword">export</span> { <span class="syntax-variable">project</span> }</pre>
+                    </div>
+                </div>
+                <div class="project-tech-tags">
+                    <% project.technologies.slice(0, 5).forEach(tech => { %>
+                        <span class="tech-tag"><%= tech %></span>
+                    <% }) %>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Project Details as README -->
+<!-- Project Details - Hybrid Layout -->
 <section class="section project-details">
     <div class="container">
-        <div class="terminal-card animate-on-scroll">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
+        <div class="project-details-grid">
+            <!-- Plain text for business readers -->
+            <div class="project-details-content animate-on-scroll">
+                <div class="details-section">
+                    <h2>The Challenge</h2>
+                    <p class="details-intro">What the client was facing:</p>
+                    <ul class="details-list">
+                        <% project.challenges.forEach(challenge => { %>
+                            <li><%= challenge %></li>
+                        <% }) %>
+                    </ul>
                 </div>
-                <span class="terminal-title">README.md</span>
+
+                <div class="details-section">
+                    <h2>Our Solution</h2>
+                    <p class="details-intro">How we addressed these challenges:</p>
+                    <ul class="details-list solutions-list">
+                        <% project.solutions.forEach(solution => { %>
+                            <li><%= solution %></li>
+                        <% }) %>
+                    </ul>
+                </div>
             </div>
-            <div class="terminal-body readme-content">
-                <div class="readme-section">
-                    <p><span class="syntax-comment"># Overview</span></p>
-                    <p><%= project.description %></p>
-                </div>
 
-                <div class="readme-section">
-                    <p><span class="syntax-comment"># Challenges</span></p>
-                    <% project.challenges.forEach(challenge => { %>
-                        <p><span class="syntax-keyword">-</span> <%= challenge %></p>
-                    <% }) %>
+            <!-- Technical README for developers -->
+            <div class="project-details-terminal animate-on-scroll">
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <span class="terminal-title">README.md</span>
+                    </div>
+                    <div class="terminal-body readme-content">
+                        <div class="readme-section">
+                            <p><span class="syntax-comment"># Challenges</span></p>
+                            <% project.challenges.slice(0, 2).forEach(challenge => { %>
+                                <p><span class="syntax-keyword">-</span> <%= challenge.substring(0, 50) %>...</p>
+                            <% }) %>
+                        </div>
+                        <div class="readme-section">
+                            <p><span class="syntax-comment"># Solutions</span></p>
+                            <% project.solutions.slice(0, 2).forEach(solution => { %>
+                                <p><span class="syntax-type">✓</span> <%= solution.substring(0, 50) %>...</p>
+                            <% }) %>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="readme-section">
-                    <p><span class="syntax-comment"># Solutions</span></p>
-                    <% project.solutions.forEach(solution => { %>
-                        <p><span class="syntax-type">✓</span> <%= solution %></p>
-                    <% }) %>
-                </div>
+                <p class="code-context">Technical summary</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Results as Code Block -->
+<!-- Results Section - Hybrid -->
 <section class="section project-results">
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// results.metrics()</span>
-            <h2 class="section-title">Results</h2>
+            <h2 class="section-title">The Results</h2>
+            <p class="section-intro">Measurable impact delivered</p>
         </div>
 
-        <div class="code-block animate-on-scroll">
-            <div class="code-block-header">
-                <span class="code-block-filename">results.json</span>
+        <div class="results-hybrid-grid">
+            <!-- Visual results cards -->
+            <div class="results-cards animate-on-scroll">
+                <% project.results.forEach(result => { %>
+                    <div class="result-card">
+                        <span class="result-value"><%= result.value %></span>
+                        <span class="result-metric"><%= result.metric %></span>
+                    </div>
+                <% }) %>
             </div>
-            <div class="code-block-body">
-                <pre>{
-  <span class="syntax-variable">"metrics"</span>: {<% project.results.forEach((result, index) => { %>
-    <span class="syntax-variable">"<%= result.metric.toLowerCase().replace(/\s+/g, '_') %>"</span>: <span class="syntax-string">"<%= result.value %>"</span><% if (index < project.results.length - 1) { %>,<% } %><% }) %>
-  },
-  <span class="syntax-variable">"status"</span>: <span class="syntax-string">"success"</span>
+
+            <!-- Technical JSON view -->
+            <div class="results-code animate-on-scroll">
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">results.json</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre>{
+  <span class="syntax-variable">"status"</span>: <span class="syntax-string">"success"</span>,
+  <span class="syntax-variable">"metrics"</span>: <span class="syntax-number"><%= project.results.length %></span>
 }</pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Tech Stack -->
+<!-- Tech Stack - Hybrid -->
 <section class="section project-stack">
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// stack.list()</span>
-            <h2 class="section-title">Tech Stack</h2>
+            <h2 class="section-title">Technologies Used</h2>
         </div>
 
-        <div class="code-block animate-on-scroll">
-            <div class="code-block-header">
-                <span class="code-block-filename">package.json</span>
+        <div class="stack-hybrid-grid">
+            <!-- Visual tech badges -->
+            <div class="stack-visual animate-on-scroll">
+                <p class="stack-intro">The tools and technologies that powered this project:</p>
+                <div class="stack-badges">
+                    <% project.technologies.forEach(tech => { %>
+                        <span class="stack-badge"><%= tech %></span>
+                    <% }) %>
+                </div>
             </div>
-            <div class="code-block-body">
-                <pre>{
-  <span class="syntax-variable">"dependencies"</span>: {<% project.technologies.forEach((tech, index) => { %>
-    <span class="syntax-variable">"<%= tech.toLowerCase().replace(/\s+/g, '-').replace(/[.]/g, '') %>"</span>: <span class="syntax-string">"latest"</span><% if (index < project.technologies.length - 1) { %>,<% } %><% }) %>
+
+            <!-- Technical package.json -->
+            <div class="stack-code animate-on-scroll">
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">package.json</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre>{
+  <span class="syntax-variable">"dependencies"</span>: {
+    <span class="syntax-comment">// <%= project.technologies.length %> technologies</span>
   }
 }</pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -100,7 +180,10 @@
 <!-- Navigation -->
 <section class="section project-nav">
     <div class="container">
-        <a href="/projects" class="btn btn-secondary">cd ../projects</a>
+        <div class="project-nav-content animate-on-scroll">
+            <a href="/projects" class="btn btn-secondary">← Back to All Projects</a>
+            <a href="/contact" class="btn btn-primary">Start Your Project</a>
+        </div>
     </div>
 </section>
 

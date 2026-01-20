@@ -3,8 +3,8 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// import { company } from '@devx360/about'</span>
-            <h1 class="section-title">company.info()</h1>
-            <p class="section-subtitle">A team of engineers, designers, and problem solvers</p>
+            <h1 class="section-title">About Us</h1>
+            <p class="section-subtitle">A team that combines technical excellence with business understanding</p>
         </div>
     </div>
 </section>
@@ -12,30 +12,60 @@
 <!-- Story Section -->
 <section class="section about-story">
     <div class="container">
-        <div class="terminal-card animate-on-scroll">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
+        <div class="story-hybrid-grid">
+            <!-- Plain text story for non-technical readers -->
+            <div class="story-content animate-on-scroll">
+                <h2 class="story-headline">Building Software That Matters</h2>
+                <p class="story-lead">
+                    Since 2018, we've helped businesses transform their operations through thoughtful technology solutions.
+                </p>
+                <p>
+                    What sets us apart isn't just our technical skills—it's our commitment to understanding
+                    your business first. We ask questions, listen carefully, and only then apply our expertise
+                    to solve real problems.
+                </p>
+                <p>
+                    From startups launching their first product to enterprises modernizing legacy systems,
+                    we've been trusted partners for organizations that demand quality and reliability.
+                </p>
+                <div class="story-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-value">India-based</span>
+                        <span class="highlight-label">with global reach</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-value">40+ experts</span>
+                        <span class="highlight-label">engineers & designers</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-value">8+ years</span>
+                        <span class="highlight-label">of experience</span>
+                    </div>
                 </div>
-                <span class="terminal-title">cat company_story.md</span>
             </div>
-            <div class="terminal-body story-terminal-content">
-                <p><span class="syntax-comment"># Our Story</span></p>
-                <p>
-                    Founded in <span class="syntax-number">2018</span> and based in India,
-                    <span class="syntax-type">&lt;DevX360 /&gt;</span> started with a simple mission:
-                    to build reliable, scalable software that solves real business problems.
-                </p>
-                <p>
-                    What began as a small team of passionate engineers has grown into a full-service
-                    software solutions firm trusted by enterprises across industries.
-                </p>
-                <p>
-                    We believe that great software is more than just code—it's about understanding the
-                    challenges our clients face and delivering solutions that make a measurable difference.
-                </p>
+
+            <!-- Technical terminal view -->
+            <div class="story-terminal animate-on-scroll">
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <span class="terminal-title">cat company_story.md</span>
+                    </div>
+                    <div class="terminal-body story-terminal-content">
+                        <p><span class="syntax-comment"># Our Story</span></p>
+                        <p>
+                            Founded <span class="syntax-number">2018</span> |
+                            <span class="syntax-type">&lt;DevX360 /&gt;</span>
+                        </p>
+                        <p><span class="syntax-variable">mission</span>: <span class="syntax-string">"Build reliable, scalable software"</span></p>
+                        <p><span class="syntax-variable">status</span>: <span class="syntax-type">ACTIVE</span></p>
+                    </div>
+                </div>
+                <p class="code-context">The technical perspective</p>
             </div>
         </div>
     </div>
@@ -46,32 +76,51 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// values.export()</span>
-            <h2 class="section-title">What Drives Us</h2>
+            <h2 class="section-title">Our Values</h2>
+            <p class="section-intro">The principles that guide how we work with every client</p>
         </div>
 
-        <div class="code-block animate-on-scroll">
-            <div class="code-block-header">
-                <span class="code-block-filename">values.config.ts</span>
+        <div class="values-hybrid-grid">
+            <!-- Visual value cards -->
+            <div class="values-cards animate-on-scroll">
+                <div class="value-card">
+                    <div class="value-card-icon">⚙️</div>
+                    <h3>Engineering Excellence</h3>
+                    <p>We write code that's clean, tested, and maintainable. Your next development team will thank you.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-card-icon">🤝</div>
+                    <h3>True Partnership</h3>
+                    <p>We succeed when you succeed. We're invested in your outcomes, not just delivering features.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-card-icon">📚</div>
+                    <h3>Continuous Learning</h3>
+                    <p>Technology evolves fast. We stay current so your solutions use the best tools available.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-card-icon">💬</div>
+                    <h3>Transparency</h3>
+                    <p>No surprises. Regular updates, honest timelines, and clear communication throughout.</p>
+                </div>
             </div>
-            <div class="code-block-body">
-                <pre><span class="syntax-keyword">export const</span> <span class="syntax-variable">values</span> = {
-  <span class="syntax-variable">engineering</span>: {
-    <span class="syntax-variable">name</span>: <span class="syntax-string">"Engineering Excellence"</span>,
-    <span class="syntax-variable">principle</span>: <span class="syntax-string">"Clean, maintainable code that stands the test of time"</span>
-  },
-  <span class="syntax-variable">partnership</span>: {
-    <span class="syntax-variable">name</span>: <span class="syntax-string">"Client Partnership"</span>,
-    <span class="syntax-variable">principle</span>: <span class="syntax-string">"Your success is our success—partners, not vendors"</span>
-  },
-  <span class="syntax-variable">learning</span>: {
-    <span class="syntax-variable">name</span>: <span class="syntax-string">"Continuous Learning"</span>,
-    <span class="syntax-variable">principle</span>: <span class="syntax-string">"Technology evolves, and so do we"</span>
-  },
-  <span class="syntax-variable">transparency</span>: {
-    <span class="syntax-variable">name</span>: <span class="syntax-string">"Transparency"</span>,
-    <span class="syntax-variable">principle</span>: <span class="syntax-string">"Open communication—no surprises, no hidden agendas"</span>
-  }
+
+            <!-- Code block for technical representation -->
+            <div class="values-code animate-on-scroll">
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">values.config.ts</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-keyword">export const</span> <span class="syntax-variable">values</span> = {
+  <span class="syntax-variable">engineering</span>: <span class="syntax-string">"excellence"</span>,
+  <span class="syntax-variable">partnership</span>: <span class="syntax-string">"true"</span>,
+  <span class="syntax-variable">learning</span>: <span class="syntax-string">"continuous"</span>,
+  <span class="syntax-variable">transparency</span>: <span class="syntax-string">"always"</span>
 };</pre>
+                    </div>
+                </div>
+                <p class="code-context">Our values in code</p>
             </div>
         </div>
     </div>
@@ -82,30 +131,64 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// team.members()</span>
-            <h2 class="section-title">The Team</h2>
+            <h2 class="section-title">Meet the Team</h2>
+            <p class="section-intro">Diverse expertise, united by a passion for great software</p>
         </div>
 
-        <div class="terminal-card animate-on-scroll">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
+        <div class="team-hybrid-grid">
+            <!-- Visual team overview -->
+            <div class="team-overview animate-on-scroll">
+                <div class="team-stat-cards">
+                    <div class="team-stat-card">
+                        <span class="team-stat-value">40+</span>
+                        <span class="team-stat-label">Team Members</span>
+                    </div>
+                    <div class="team-stat-card">
+                        <span class="team-stat-value">6</span>
+                        <span class="team-stat-label">Specializations</span>
+                    </div>
+                    <div class="team-stat-card">
+                        <span class="team-stat-value">12</span>
+                        <span class="team-stat-label">Countries Served</span>
+                    </div>
                 </div>
-                <span class="terminal-title">team_overview.sh</span>
+                <div class="team-expertise">
+                    <h4>Areas of Expertise</h4>
+                    <div class="expertise-tags">
+                        <span class="expertise-tag">Backend Development</span>
+                        <span class="expertise-tag">Frontend & UI</span>
+                        <span class="expertise-tag">Cloud Architecture</span>
+                        <span class="expertise-tag">DevOps & SRE</span>
+                        <span class="expertise-tag">Data Engineering</span>
+                        <span class="expertise-tag">UX Design</span>
+                    </div>
+                </div>
+                <p class="team-philosophy">
+                    We believe in using the right tool for each job. Our team's diverse skill set means
+                    we can recommend solutions based on what's best for your project, not what we're limited to.
+                </p>
             </div>
-            <div class="terminal-body">
-                <div class="team-terminal-content">
-                    <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $TEAM_SIZE<br>
-                    <span class="syntax-number">40+</span> <span class="syntax-comment"># engineers and designers</span><br><br>
 
-                    <span class="syntax-keyword">$</span> <span class="syntax-function">ls</span> expertise/<br>
-                    <span class="syntax-string">backend/</span>  <span class="syntax-string">frontend/</span>  <span class="syntax-string">cloud/</span>  <span class="syntax-string">devops/</span>  <span class="syntax-string">data/</span>  <span class="syntax-string">ux/</span><br><br>
-
-                    <span class="syntax-keyword">$</span> <span class="syntax-function">cat</span> philosophy.txt<br>
-                    <span class="syntax-comment"># We select the right tools for each unique problem,</span><br>
-                    <span class="syntax-comment"># rather than forcing a one-size-fits-all approach.</span>
+            <!-- Technical terminal view -->
+            <div class="team-terminal animate-on-scroll">
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <span class="terminal-title">team_overview.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="team-terminal-content">
+                            <span class="syntax-keyword">$</span> <span class="syntax-function">ls</span> expertise/<br>
+                            <span class="syntax-string">backend/</span>  <span class="syntax-string">frontend/</span>  <span class="syntax-string">cloud/</span><br>
+                            <span class="syntax-string">devops/</span>  <span class="syntax-string">data/</span>  <span class="syntax-string">ux/</span>
+                        </div>
+                    </div>
                 </div>
+                <p class="code-context">Our technical directories</p>
             </div>
         </div>
     </div>
@@ -114,18 +197,30 @@
 <!-- CTA Section -->
 <section class="section cta-section">
     <div class="container">
-        <div class="cta-content animate-on-scroll">
-            <div class="code-block">
-                <div class="code-block-header">
-                    <span class="code-block-filename">connect.sh</span>
-                </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-comment"># Want to work with us?</span>
-<span class="syntax-keyword">$</span> <span class="syntax-function">devx360</span> contact --type=<span class="syntax-string">"inquiry"</span></pre>
+        <div class="cta-hybrid animate-on-scroll">
+            <div class="cta-message">
+                <h2 class="cta-title">Want to Learn More?</h2>
+                <p class="cta-text">
+                    We'd love to hear about your project and discuss how we might help.
+                    Reach out for a no-pressure conversation.
+                </p>
+                <div class="cta-buttons">
+                    <a href="/contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="/projects" class="btn btn-secondary">See Our Work</a>
                 </div>
             </div>
-            <div class="cta-buttons">
-                <a href="/contact" class="btn btn-primary">./contact --new</a>
+            <div class="cta-code-wrapper">
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">connect.sh</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-keyword">$</span> <span class="syntax-function">devx360</span> contact \
+    --type=<span class="syntax-string">"inquiry"</span>
+
+<span class="syntax-type">[✓]</span> <span class="syntax-string">We'll respond within 24h</span></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -2,43 +2,59 @@
 <section class="hero section" id="hero">
     <div class="container">
         <div class="hero-content">
-            <!-- Terminal-style intro -->
-            <div class="terminal-card hero-terminal animate-on-scroll">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <span class="terminal-dot red"></span>
-                        <span class="terminal-dot yellow"></span>
-                        <span class="terminal-dot green"></span>
+            <div class="hero-grid">
+                <!-- Left: Business messaging -->
+                <div class="hero-text animate-on-scroll">
+                    <h1 class="hero-title">
+                        We build software<br>that <span class="text-accent">transforms</span> businesses
+                    </h1>
+                    <p class="hero-subtitle">
+                        Partner with a team that understands both technology and business. We deliver
+                        solutions that reduce costs, increase efficiency, and create competitive advantages.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="/contact" class="btn btn-primary">Start a Conversation</a>
+                        <a href="/projects" class="btn btn-secondary">View Our Work</a>
                     </div>
-                    <span class="terminal-title">~/devx360</span>
+
+                    <!-- Trust indicators -->
+                    <div class="hero-trust">
+                        <span class="trust-label">Trusted by industry leaders in</span>
+                        <div class="trust-badges">
+                            <span class="trust-badge">Finance</span>
+                            <span class="trust-badge">Healthcare</span>
+                            <span class="trust-badge">Logistics</span>
+                            <span class="trust-badge">Retail</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">cat</span> company.info
-                    </div>
-                    <div class="terminal-output">
-                        <br>
-                        <span class="syntax-comment"># Enterprise Software Solutions</span><br><br>
-                        <span class="syntax-variable">name</span>: <span class="syntax-string">"<span class="logo-bracket">&lt;</span><span class="logo-name">DevX360</span><span class="logo-bracket"> /&gt;</span>"</span><br>
-                        <span class="syntax-variable">mission</span>: <span class="syntax-string">"Building scalable, secure, innovative applications"</span><br>
-                        <span class="syntax-variable">domain</span>: <span class="syntax-string">"devx360.in"</span><br>
-                        <span class="syntax-variable">status</span>: <span class="syntax-type">ACTIVE</span><br>
+
+                <!-- Right: Terminal-style intro (technical) -->
+                <div class="hero-terminal-wrapper animate-on-scroll">
+                    <div class="terminal-card hero-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                            </div>
+                            <span class="terminal-title">~/devx360</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">cat</span> company.info
+                            </div>
+                            <div class="terminal-output">
+                                <br>
+                                <span class="syntax-comment"># Enterprise Software Solutions</span><br><br>
+                                <span class="syntax-variable">name</span>: <span class="syntax-string">"<span class="logo-bracket">&lt;</span><span class="logo-name">DevX360</span><span class="logo-bracket"> /&gt;</span>"</span><br>
+                                <span class="syntax-variable">mission</span>: <span class="syntax-string">"Building scalable, secure, innovative applications"</span><br>
+                                <span class="syntax-variable">domain</span>: <span class="syntax-string">"devx360.in"</span><br>
+                                <span class="syntax-variable">status</span>: <span class="syntax-type">ACTIVE</span><br>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <h1 class="hero-title animate-on-scroll">
-                We build software<br>that <span class="syntax-function">transforms</span> businesses
-            </h1>
-
-            <p class="hero-subtitle animate-on-scroll">
-                A software solutions firm dedicated to crafting scalable, secure, and innovative
-                applications that drive measurable growth for enterprises.
-            </p>
-
-            <div class="hero-cta animate-on-scroll">
-                <a href="/services" class="btn btn-primary">./services --list</a>
-                <a href="/projects" class="btn btn-secondary">./projects --view</a>
             </div>
         </div>
     </div>
@@ -50,38 +66,78 @@
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// services.export()</span>
             <h2 class="section-title">What We Build</h2>
+            <p class="section-intro">End-to-end solutions designed to solve real business challenges</p>
         </div>
 
-        <!-- Code Block for Services -->
-        <div class="code-block animate-on-scroll">
-            <div class="code-block-header">
-                <span class="code-block-filename">services.config.json</span>
+        <div class="services-hybrid-grid">
+            <!-- Business benefits cards -->
+            <div class="services-benefits animate-on-scroll">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Custom Software</h3>
+                    <p class="benefit-text">Reduce operational costs by 40% with tailored solutions that automate your specific workflows.</p>
+                    <span class="benefit-outcome">→ Faster time to market</span>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">Cloud & DevOps</h3>
+                    <p class="benefit-text">Achieve 99.9% uptime and scale seamlessly from 100 to 100,000 users.</p>
+                    <span class="benefit-outcome">→ Zero downtime deployments</span>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                            <path d="M12 2a10 10 0 0 1 10 10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                        </svg>
+                    </div>
+                    <h3 class="benefit-title">AI & Analytics</h3>
+                    <p class="benefit-text">Make data-driven decisions with AI that predicts trends and automates insights.</p>
+                    <span class="benefit-outcome">→ 3x faster decision making</span>
+                </div>
             </div>
-            <div class="code-block-body">
-                <pre><span class="syntax-keyword">{</span>
+
+            <!-- Code Block for technical details -->
+            <div class="services-code animate-on-scroll">
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">services.config.json</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-keyword">{</span>
   <span class="syntax-variable">"services"</span>: <span class="syntax-keyword">[</span>
     <span class="syntax-keyword">{</span>
-      <span class="syntax-variable">"name"</span>: <span class="syntax-string">"Custom Software Development"</span>,
-      <span class="syntax-variable">"description"</span>: <span class="syntax-string">"Bespoke applications built from the ground up"</span>,
-      <span class="syntax-variable">"stack"</span>: <span class="syntax-keyword">[</span><span class="syntax-string">"Node.js"</span>, <span class="syntax-string">"React"</span>, <span class="syntax-string">"Python"</span>, <span class="syntax-string">"Go"</span><span class="syntax-keyword">]</span>
+      <span class="syntax-variable">"name"</span>: <span class="syntax-string">"Custom Software"</span>,
+      <span class="syntax-variable">"stack"</span>: <span class="syntax-keyword">[</span><span class="syntax-string">"Node.js"</span>, <span class="syntax-string">"React"</span>, <span class="syntax-string">"Python"</span><span class="syntax-keyword">]</span>
     <span class="syntax-keyword">}</span>,
     <span class="syntax-keyword">{</span>
-      <span class="syntax-variable">"name"</span>: <span class="syntax-string">"Cloud & DevOps Solutions"</span>,
-      <span class="syntax-variable">"description"</span>: <span class="syntax-string">"Robust infrastructure with automated CI/CD pipelines"</span>,
-      <span class="syntax-variable">"stack"</span>: <span class="syntax-keyword">[</span><span class="syntax-string">"AWS"</span>, <span class="syntax-string">"Kubernetes"</span>, <span class="syntax-string">"Terraform"</span>, <span class="syntax-string">"Docker"</span><span class="syntax-keyword">]</span>
+      <span class="syntax-variable">"name"</span>: <span class="syntax-string">"Cloud & DevOps"</span>,
+      <span class="syntax-variable">"stack"</span>: <span class="syntax-keyword">[</span><span class="syntax-string">"AWS"</span>, <span class="syntax-string">"Kubernetes"</span>, <span class="syntax-string">"Docker"</span><span class="syntax-keyword">]</span>
     <span class="syntax-keyword">}</span>,
     <span class="syntax-keyword">{</span>
-      <span class="syntax-variable">"name"</span>: <span class="syntax-string">"AI & Machine Learning"</span>,
-      <span class="syntax-variable">"description"</span>: <span class="syntax-string">"Intelligent automation and predictive analytics"</span>,
-      <span class="syntax-variable">"stack"</span>: <span class="syntax-keyword">[</span><span class="syntax-string">"TensorFlow"</span>, <span class="syntax-string">"PyTorch"</span>, <span class="syntax-string">"OpenAI"</span>, <span class="syntax-string">"LangChain"</span><span class="syntax-keyword">]</span>
+      <span class="syntax-variable">"name"</span>: <span class="syntax-string">"AI & ML"</span>,
+      <span class="syntax-variable">"stack"</span>: <span class="syntax-keyword">[</span><span class="syntax-string">"TensorFlow"</span>, <span class="syntax-string">"PyTorch"</span>, <span class="syntax-string">"OpenAI"</span><span class="syntax-keyword">]</span>
     <span class="syntax-keyword">}</span>
   <span class="syntax-keyword">]</span>
 <span class="syntax-keyword">}</span></pre>
+                    </div>
+                </div>
+                <p class="code-context">Technical stack powering your solution</p>
             </div>
         </div>
 
         <div class="section-link animate-on-scroll">
-            <a href="/services" class="btn btn-secondary">./services --all →</a>
+            <a href="/services" class="btn btn-secondary">Explore All Services →</a>
         </div>
     </div>
 </section>
@@ -91,42 +147,72 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// metrics.summary()</span>
-            <h2 class="section-title">By the Numbers</h2>
+            <h2 class="section-title">Proven Track Record</h2>
+            <p class="section-intro">Numbers that speak to our commitment and capability</p>
         </div>
 
-        <!-- Terminal-style stats display -->
-        <div class="terminal-card animate-on-scroll">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
+        <div class="stats-hybrid-grid">
+            <!-- Visual impact cards -->
+            <div class="stats-impact animate-on-scroll">
+                <div class="impact-card">
+                    <span class="impact-number">8+</span>
+                    <span class="impact-label">Years of Experience</span>
+                    <span class="impact-context">Building enterprise solutions since 2016</span>
                 </div>
-                <span class="terminal-title">company_metrics.sh</span>
+                <div class="impact-card">
+                    <span class="impact-number">150+</span>
+                    <span class="impact-label">Projects Delivered</span>
+                    <span class="impact-context">On time, on budget, every time</span>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">50+</span>
+                    <span class="impact-label">Enterprise Clients</span>
+                    <span class="impact-context">From startups to Fortune 500</span>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">98%</span>
+                    <span class="impact-label">Client Retention</span>
+                    <span class="impact-context">Partners who stay with us</span>
+                </div>
             </div>
-            <div class="terminal-body">
-                <div class="stats-terminal-grid">
-                    <div class="stat-terminal-item">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $YEARS_EXPERIENCE<br>
-                        <span class="stat-value syntax-number">8+</span>
-                        <span class="stat-label syntax-comment"># years of experience</span>
+
+            <!-- Terminal-style technical stats -->
+            <div class="stats-terminal-wrapper animate-on-scroll">
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <span class="terminal-title">company_metrics.sh</span>
                     </div>
-                    <div class="stat-terminal-item">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $PROJECTS_DELIVERED<br>
-                        <span class="stat-value syntax-number">150+</span>
-                        <span class="stat-label syntax-comment"># projects delivered</span>
-                    </div>
-                    <div class="stat-terminal-item">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $ENTERPRISE_CLIENTS<br>
-                        <span class="stat-value syntax-number">50+</span>
-                        <span class="stat-label syntax-comment"># enterprise clients</span>
-                    </div>
-                    <div class="stat-terminal-item">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $TEAM_MEMBERS<br>
-                        <span class="stat-value syntax-number">40+</span>
-                        <span class="stat-label syntax-comment"># team members</span>
+                    <div class="terminal-body">
+                        <div class="stats-terminal-grid">
+                            <div class="stat-terminal-item">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $UPTIME_SLA<br>
+                                <span class="stat-value syntax-number">99.9%</span>
+                                <span class="stat-label syntax-comment"># guaranteed uptime</span>
+                            </div>
+                            <div class="stat-terminal-item">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $AVG_RESPONSE<br>
+                                <span class="stat-value syntax-number">&lt;4h</span>
+                                <span class="stat-label syntax-comment"># support response time</span>
+                            </div>
+                            <div class="stat-terminal-item">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $CODE_COVERAGE<br>
+                                <span class="stat-value syntax-number">90%+</span>
+                                <span class="stat-label syntax-comment"># test coverage standard</span>
+                            </div>
+                            <div class="stat-terminal-item">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">echo</span> $SECURITY_AUDITS<br>
+                                <span class="stat-value syntax-number">100%</span>
+                                <span class="stat-label syntax-comment"># projects audited</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <p class="code-context">Technical SLAs we guarantee</p>
             </div>
         </div>
     </div>
@@ -135,24 +221,41 @@
 <!-- CTA Section -->
 <section class="section cta" id="contact">
     <div class="container">
-        <div class="cta-content animate-on-scroll">
-            <div class="code-block cta-code">
-                <div class="code-block-header">
-                    <span class="code-block-filename">start_project.sh</span>
+        <div class="cta-hybrid animate-on-scroll">
+            <!-- Business messaging -->
+            <div class="cta-message">
+                <h2 class="cta-title">Ready to Start Your Project?</h2>
+                <p class="cta-text">
+                    Whether you need a quick consultation or a full-scale development partnership,
+                    we're here to help. No pressure, just a conversation about your goals.
+                </p>
+                <div class="cta-benefits">
+                    <span class="cta-benefit">✓ Free initial consultation</span>
+                    <span class="cta-benefit">✓ Response within 24 hours</span>
+                    <span class="cta-benefit">✓ No obligation quote</span>
                 </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-comment"># Ready to transform your business?</span>
-
-<span class="syntax-keyword">$</span> <span class="syntax-function">curl</span> -X POST https://devx360.in/api/contact \
-    --data <span class="syntax-string">'{"message": "Let'\''s build something great"}'</span>
-
-<span class="syntax-comment"># Or reach out directly:</span>
-<span class="syntax-keyword">$</span> <span class="syntax-function">mail</span> -s <span class="syntax-string">"New Project Inquiry"</span> contact@devx360.in</pre>
+                <div class="cta-buttons">
+                    <a href="/contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="mailto:contact@devx360.in" class="btn btn-secondary">contact@devx360.in</a>
                 </div>
             </div>
-            <div class="cta-buttons">
-                <a href="/contact" class="btn btn-primary">./contact --new</a>
-                <a href="mailto:contact@devx360.in" class="btn btn-secondary">mail contact@devx360.in</a>
+
+            <!-- Technical code block -->
+            <div class="cta-code-wrapper">
+                <div class="code-block cta-code">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">start_project.sh</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-comment"># Ready to transform your business?</span>
+
+<span class="syntax-keyword">$</span> <span class="syntax-function">curl</span> -X POST devx360.in/api/contact \
+    --data <span class="syntax-string">'{"project": "your_idea"}'</span>
+
+<span class="syntax-comment"># Response:</span>
+<span class="syntax-keyword">{</span> <span class="syntax-variable">"status"</span>: <span class="syntax-string">"Let's build it"</span> <span class="syntax-keyword">}</span></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

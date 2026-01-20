@@ -39,31 +39,52 @@ const ThemeManager = {
 // =============================================================================
 const PageTransitions = {
   TRANSITION_DURATION: 200,
-  
+
   init() {
-    // Fade in on page load
+    // Ensure page is visible on initial load (remove any stale fade-out)
+    document.body.classList.remove('fade-out');
     document.body.classList.add('fade-in');
-    
+
     // Handle internal link clicks
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a');
       if (!link || !this.isInternalLink(link)) return;
-      
+
       e.preventDefault();
       this.navigateTo(link.href);
     });
+
+    // Handle browser back/forward navigation (popstate event)
+    window.addEventListener('popstate', () => this.handlePopState());
+
+    // Handle page show event (fires when page is restored from bfcache)
+    window.addEventListener('pageshow', (e) => this.handlePageShow(e));
   },
-  
+
   isInternalLink(link) {
-    return link.href && 
-           link.href.startsWith(window.location.origin) && 
+    return link.href &&
+           link.href.startsWith(window.location.origin) &&
            !link.href.includes('#') &&
            !link.hasAttribute('data-no-transition');
   },
-  
+
   navigateTo(url) {
     document.body.classList.add('fade-out');
     setTimeout(() => window.location.href = url, this.TRANSITION_DURATION);
+  },
+
+  handlePopState() {
+    // When user navigates with back/forward, ensure page is visible
+    document.body.classList.remove('fade-out');
+    document.body.classList.add('fade-in');
+  },
+
+  handlePageShow(event) {
+    // event.persisted is true if page is restored from bfcache (back-forward cache)
+    if (event.persisted) {
+      document.body.classList.remove('fade-out');
+      document.body.classList.add('fade-in');
+    }
   }
 };
 
@@ -129,20 +150,26 @@ const MobileNav = {
 // =============================================================================
 const FAQAccordion = {
   init() {
+    // Handle original .faq-item elements
     this.items = document.querySelectorAll('.faq-item');
-    if (!this.items.length) return;
-
     this.items.forEach(item => {
       const question = item.querySelector('.faq-question');
-      question?.addEventListener('click', () => this.toggle(item));
+      question?.addEventListener('click', () => this.toggle(item, this.items));
+    });
+
+    // Handle new .faq-card elements (hybrid design)
+    this.cards = document.querySelectorAll('.faq-card');
+    this.cards.forEach(card => {
+      const question = card.querySelector('.faq-card-question');
+      question?.addEventListener('click', () => this.toggle(card, this.cards));
     });
   },
 
-  toggle(item) {
+  toggle(item, collection) {
     const isOpen = item.classList.contains('active');
 
-    // Close all items first (only one open at a time)
-    this.items.forEach(i => i.classList.remove('active'));
+    // Close all items in the same collection first (only one open at a time)
+    collection.forEach(i => i.classList.remove('active'));
 
     // Open clicked item if it wasn't already open
     if (!isOpen) {

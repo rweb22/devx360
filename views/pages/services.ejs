@@ -3,122 +3,190 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// import { services } from '@devx360/solutions'</span>
-            <h1 class="section-title">services.list()</h1>
-            <p class="section-subtitle">End-to-end software solutions for enterprise challenges</p>
+            <h1 class="section-title">Our Services</h1>
+            <p class="section-subtitle">End-to-end software solutions that drive business results</p>
+        </div>
+
+        <!-- Value proposition for non-technical readers -->
+        <div class="services-value-props animate-on-scroll">
+            <div class="value-prop">
+                <span class="value-icon">🎯</span>
+                <span class="value-text">Solutions tailored to your industry</span>
+            </div>
+            <div class="value-prop">
+                <span class="value-icon">⚡</span>
+                <span class="value-text">Faster delivery with agile methods</span>
+            </div>
+            <div class="value-prop">
+                <span class="value-icon">🔒</span>
+                <span class="value-text">Enterprise-grade security built-in</span>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Services as Code Blocks -->
+<!-- Services as Hybrid Cards -->
 <section class="section services-main">
     <div class="container">
-        <div class="services-code-grid">
+        <div class="services-hybrid-list">
             <!-- Custom Software Development -->
-            <div class="code-block service-code-block animate-on-scroll">
-                <div class="code-block-header">
-                    <span class="code-block-filename">custom_development.ts</span>
+            <div class="service-hybrid-item animate-on-scroll">
+                <div class="service-info">
+                    <h3 class="service-title">Custom Software Development</h3>
+                    <p class="service-description">
+                        Build exactly what your business needs. We create bespoke applications that automate
+                        workflows, improve efficiency, and give you a competitive edge.
+                    </p>
+                    <ul class="service-benefits">
+                        <li>Reduce manual processes by up to 70%</li>
+                        <li>Own your software—no licensing fees</li>
+                        <li>Scale as your business grows</li>
+                    </ul>
                 </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-keyword">export const</span> <span class="syntax-variable">service</span> = {
-  <span class="syntax-variable">name</span>: <span class="syntax-string">"Custom Software"</span>,
-  <span class="syntax-variable">description</span>: <span class="syntax-string">"Tailored solutions"</span>,
-  <span class="syntax-variable">stack</span>: [
-    <span class="syntax-string">"Node.js"</span>,
-    <span class="syntax-string">"Python"</span>,
-    <span class="syntax-string">"React"</span>,
-    <span class="syntax-string">"Go"</span>
-  ]
-};</pre>
+                <div class="code-block service-code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">custom_development.ts</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-keyword">export const</span> <span class="syntax-variable">stack</span> = [
+  <span class="syntax-string">"Node.js"</span>, <span class="syntax-string">"Python"</span>,
+  <span class="syntax-string">"React"</span>, <span class="syntax-string">"Go"</span>
+];</pre>
+                    </div>
                 </div>
             </div>
 
             <!-- Cloud & DevOps -->
-            <div class="code-block service-code-block animate-on-scroll">
-                <div class="code-block-header">
-                    <span class="code-block-filename">cloud_devops.yaml</span>
+            <div class="service-hybrid-item animate-on-scroll">
+                <div class="service-info">
+                    <h3 class="service-title">Cloud & DevOps Solutions</h3>
+                    <p class="service-description">
+                        Modernize your infrastructure for reliability and speed. We build systems that
+                        deploy automatically, scale on demand, and recover from failures instantly.
+                    </p>
+                    <ul class="service-benefits">
+                        <li>99.9% uptime guarantee</li>
+                        <li>Deploy updates without downtime</li>
+                        <li>Pay only for what you use</li>
+                    </ul>
                 </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-variable">service</span>:
-  <span class="syntax-variable">name</span>: <span class="syntax-string">Cloud & DevOps</span>
-  <span class="syntax-variable">description</span>: <span class="syntax-string">Scalable infrastructure</span>
-  <span class="syntax-variable">stack</span>:
-    - <span class="syntax-string">AWS</span>
-    - <span class="syntax-string">Azure</span>
-    - <span class="syntax-string">Kubernetes</span>
-    - <span class="syntax-string">Terraform</span></pre>
+                <div class="code-block service-code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">cloud_devops.yaml</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-variable">stack</span>:
+  - <span class="syntax-string">AWS / Azure</span>
+  - <span class="syntax-string">Kubernetes</span>
+  - <span class="syntax-string">Terraform</span></pre>
+                    </div>
                 </div>
             </div>
 
             <!-- AI & Machine Learning -->
-            <div class="code-block service-code-block animate-on-scroll">
-                <div class="code-block-header">
-                    <span class="code-block-filename">ai_ml.py</span>
+            <div class="service-hybrid-item animate-on-scroll">
+                <div class="service-info">
+                    <h3 class="service-title">AI & Machine Learning</h3>
+                    <p class="service-description">
+                        Turn your data into decisions. We implement intelligent systems that predict outcomes,
+                        automate analysis, and surface insights your competitors miss.
+                    </p>
+                    <ul class="service-benefits">
+                        <li>Automate repetitive decision-making</li>
+                        <li>Predict customer behavior</li>
+                        <li>Extract insights from unstructured data</li>
+                    </ul>
                 </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-keyword">class</span> <span class="syntax-type">AIService</span>:
-    <span class="syntax-variable">name</span> = <span class="syntax-string">"AI & ML"</span>
-    <span class="syntax-variable">description</span> = <span class="syntax-string">"Intelligent systems"</span>
-    <span class="syntax-variable">stack</span> = [
-        <span class="syntax-string">"TensorFlow"</span>,
-        <span class="syntax-string">"PyTorch"</span>,
-        <span class="syntax-string">"OpenAI"</span>,
-        <span class="syntax-string">"LangChain"</span>
-    ]</pre>
+                <div class="code-block service-code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">ai_ml.py</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-variable">stack</span> = [
+    <span class="syntax-string">"TensorFlow"</span>, <span class="syntax-string">"PyTorch"</span>,
+    <span class="syntax-string">"OpenAI"</span>, <span class="syntax-string">"LangChain"</span>
+]</pre>
+                    </div>
                 </div>
             </div>
 
             <!-- Enterprise Integration -->
-            <div class="code-block service-code-block animate-on-scroll">
-                <div class="code-block-header">
-                    <span class="code-block-filename">integration.json</span>
+            <div class="service-hybrid-item animate-on-scroll">
+                <div class="service-info">
+                    <h3 class="service-title">Enterprise Integration</h3>
+                    <p class="service-description">
+                        Connect your systems and eliminate data silos. We build bridges between your CRM,
+                        ERP, and custom applications so information flows seamlessly.
+                    </p>
+                    <ul class="service-benefits">
+                        <li>Single source of truth across systems</li>
+                        <li>Real-time data synchronization</li>
+                        <li>Automate cross-system workflows</li>
+                    </ul>
                 </div>
-                <div class="code-block-body">
-                    <pre>{
-  <span class="syntax-variable">"name"</span>: <span class="syntax-string">"Enterprise Integration"</span>,
-  <span class="syntax-variable">"description"</span>: <span class="syntax-string">"Connect systems"</span>,
-  <span class="syntax-variable">"stack"</span>: [
-    <span class="syntax-string">"REST APIs"</span>,
-    <span class="syntax-string">"GraphQL"</span>,
-    <span class="syntax-string">"Microservices"</span>,
-    <span class="syntax-string">"Event-Driven"</span>
-  ]
-}</pre>
+                <div class="code-block service-code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">integration.json</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-variable">"stack"</span>: [
+  <span class="syntax-string">"REST APIs"</span>, <span class="syntax-string">"GraphQL"</span>,
+  <span class="syntax-string">"Microservices"</span>
+]</pre>
+                    </div>
                 </div>
             </div>
 
             <!-- Mobile Development -->
-            <div class="code-block service-code-block animate-on-scroll">
-                <div class="code-block-header">
-                    <span class="code-block-filename">mobile.swift</span>
+            <div class="service-hybrid-item animate-on-scroll">
+                <div class="service-info">
+                    <h3 class="service-title">Mobile Development</h3>
+                    <p class="service-description">
+                        Reach customers where they are. We build native and cross-platform mobile apps
+                        that work flawlessly on iOS and Android from a single codebase.
+                    </p>
+                    <ul class="service-benefits">
+                        <li>One codebase, all platforms</li>
+                        <li>Offline-first capabilities</li>
+                        <li>Push notifications & engagement</li>
+                    </ul>
                 </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-keyword">struct</span> <span class="syntax-type">MobileService</span> {
-    <span class="syntax-keyword">let</span> <span class="syntax-variable">name</span> = <span class="syntax-string">"Mobile Dev"</span>
-    <span class="syntax-keyword">let</span> <span class="syntax-variable">desc</span> = <span class="syntax-string">"Cross-platform"</span>
-    <span class="syntax-keyword">let</span> <span class="syntax-variable">stack</span> = [
-        <span class="syntax-string">"React Native"</span>,
-        <span class="syntax-string">"Flutter"</span>,
-        <span class="syntax-string">"iOS"</span>,
-        <span class="syntax-string">"Android"</span>
-    ]
-}</pre>
+                <div class="code-block service-code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">mobile.swift</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-keyword">let</span> <span class="syntax-variable">stack</span> = [
+  <span class="syntax-string">"React Native"</span>, <span class="syntax-string">"Flutter"</span>,
+  <span class="syntax-string">"iOS"</span>, <span class="syntax-string">"Android"</span>
+]</pre>
+                    </div>
                 </div>
             </div>
 
             <!-- Data Engineering -->
-            <div class="code-block service-code-block animate-on-scroll">
-                <div class="code-block-header">
-                    <span class="code-block-filename">data_engineering.sql</span>
+            <div class="service-hybrid-item animate-on-scroll">
+                <div class="service-info">
+                    <h3 class="service-title">Data Engineering</h3>
+                    <p class="service-description">
+                        Build the foundation for data-driven decisions. We design pipelines that collect,
+                        transform, and deliver data to dashboards, reports, and AI models.
+                    </p>
+                    <ul class="service-benefits">
+                        <li>Real-time analytics dashboards</li>
+                        <li>Historical data warehousing</li>
+                        <li>Compliance & data governance</li>
+                    </ul>
                 </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-comment">-- Data Engineering</span>
-<span class="syntax-keyword">SELECT</span>
-  <span class="syntax-string">'Spark'</span>,
-  <span class="syntax-string">'Kafka'</span>,
-  <span class="syntax-string">'PostgreSQL'</span>,
-  <span class="syntax-string">'BigQuery'</span>
-<span class="syntax-keyword">FROM</span> <span class="syntax-type">stack</span>
-<span class="syntax-keyword">WHERE</span> <span class="syntax-variable">robust</span> = <span class="syntax-keyword">TRUE</span>;</pre>
+                <div class="code-block service-code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">data_engineering.sql</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-comment">-- Stack</span>
+<span class="syntax-string">'Spark'</span>, <span class="syntax-string">'Kafka'</span>,
+<span class="syntax-string">'PostgreSQL'</span>, <span class="syntax-string">'BigQuery'</span></pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,42 +198,80 @@
     <div class="container">
         <div class="section-header animate-on-scroll">
             <span class="code-comment">// pipeline.execute()</span>
-            <h2 class="section-title">Our Process</h2>
+            <h2 class="section-title">How We Work</h2>
+            <p class="section-intro">A proven process that keeps you informed and in control</p>
         </div>
 
-        <!-- Process as Terminal -->
-        <div class="terminal-card animate-on-scroll">
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
+        <div class="process-hybrid-grid">
+            <!-- Visual process steps -->
+            <div class="process-visual animate-on-scroll">
+                <div class="process-step">
+                    <div class="process-number">01</div>
+                    <div class="process-content">
+                        <h4>Discovery</h4>
+                        <p>We listen first. Understanding your goals, challenges, and users before writing a single line of code.</p>
+                        <span class="process-duration">1-2 weeks</span>
+                    </div>
                 </div>
-                <span class="terminal-title">process_pipeline.sh</span>
+                <div class="process-step">
+                    <div class="process-number">02</div>
+                    <div class="process-content">
+                        <h4>Design</h4>
+                        <p>Blueprints you can visualize. Architecture diagrams, wireframes, and prototypes for your approval.</p>
+                        <span class="process-duration">2-3 weeks</span>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">03</div>
+                    <div class="process-content">
+                        <h4>Develop</h4>
+                        <p>Build in sprints with regular demos. You see progress every two weeks and can adjust priorities.</p>
+                        <span class="process-duration">Ongoing sprints</span>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">04</div>
+                    <div class="process-content">
+                        <h4>Deploy & Support</h4>
+                        <p>Launch confidently with monitoring, documentation, and a support team that has your back.</p>
+                        <span class="process-duration">Continuous</span>
+                    </div>
+                </div>
             </div>
-            <div class="terminal-body">
-                <div class="process-terminal-steps">
-                    <div class="process-terminal-step">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">./01_discovery.sh</span><br>
-                        <span class="syntax-comment"># Analyze requirements, understand business goals, define scope</span><br>
-                        <span class="syntax-type">[✓]</span> <span class="syntax-string">Discovery phase complete</span>
+
+            <!-- Technical terminal view -->
+            <div class="process-terminal-wrapper animate-on-scroll">
+                <div class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <span class="terminal-title">process_pipeline.sh</span>
                     </div>
-                    <div class="process-terminal-step">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">./02_design.sh</span><br>
-                        <span class="syntax-comment"># Architecture planning, specs, and UI/UX design</span><br>
-                        <span class="syntax-type">[✓]</span> <span class="syntax-string">Design phase complete</span>
-                    </div>
-                    <div class="process-terminal-step">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">./03_develop.sh</span> --agile --ci<br>
-                        <span class="syntax-comment"># Iterative sprints, continuous integration, demos</span><br>
-                        <span class="syntax-type">[✓]</span> <span class="syntax-string">Development phase complete</span>
-                    </div>
-                    <div class="process-terminal-step">
-                        <span class="syntax-keyword">$</span> <span class="syntax-function">./04_deploy.sh</span> --env=production<br>
-                        <span class="syntax-comment"># Production deployment, monitoring, ongoing support</span><br>
-                        <span class="syntax-type">[✓]</span> <span class="syntax-string">Deployment phase complete</span>
+                    <div class="terminal-body">
+                        <div class="process-terminal-steps">
+                            <div class="process-terminal-step">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">./01_discovery.sh</span><br>
+                                <span class="syntax-type">[✓]</span> <span class="syntax-string">Complete</span>
+                            </div>
+                            <div class="process-terminal-step">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">./02_design.sh</span><br>
+                                <span class="syntax-type">[✓]</span> <span class="syntax-string">Complete</span>
+                            </div>
+                            <div class="process-terminal-step">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">./03_develop.sh</span> --agile<br>
+                                <span class="syntax-type">[✓]</span> <span class="syntax-string">Complete</span>
+                            </div>
+                            <div class="process-terminal-step">
+                                <span class="syntax-keyword">$</span> <span class="syntax-function">./04_deploy.sh</span><br>
+                                <span class="syntax-type">[✓]</span> <span class="syntax-string">Complete</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <p class="code-context">Under the hood: our deployment pipeline</p>
             </div>
         </div>
     </div>
@@ -174,19 +280,30 @@
 <!-- CTA Section -->
 <section class="section cta-section">
     <div class="container">
-        <div class="cta-content animate-on-scroll">
-            <div class="code-block">
-                <div class="code-block-header">
-                    <span class="code-block-filename">start_project.sh</span>
-                </div>
-                <div class="code-block-body">
-                    <pre><span class="syntax-comment"># Ready to build something great?</span>
-<span class="syntax-keyword">$</span> <span class="syntax-function">devx360</span> init --project=<span class="syntax-string">"your-idea"</span>
-<span class="syntax-keyword">$</span> <span class="syntax-function">devx360</span> contact --reason=<span class="syntax-string">"new-project"</span></pre>
+        <div class="cta-hybrid animate-on-scroll">
+            <div class="cta-message">
+                <h2 class="cta-title">Let's Discuss Your Project</h2>
+                <p class="cta-text">
+                    Every great product starts with a conversation. Tell us about your challenges,
+                    and we'll share how we can help—no commitment required.
+                </p>
+                <div class="cta-buttons">
+                    <a href="/contact" class="btn btn-primary">Schedule a Call</a>
+                    <a href="mailto:contact@devx360.in" class="btn btn-secondary">contact@devx360.in</a>
                 </div>
             </div>
-            <div class="cta-buttons">
-                <a href="/contact" class="btn btn-primary">./contact --new</a>
+            <div class="cta-code-wrapper">
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">start_project.sh</span>
+                    </div>
+                    <div class="code-block-body">
+                        <pre><span class="syntax-keyword">$</span> <span class="syntax-function">devx360</span> init \
+    --project=<span class="syntax-string">"your-idea"</span>
+
+<span class="syntax-type">[✓]</span> <span class="syntax-string">Ready to build</span></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
