@@ -1,0 +1,25 @@
+<section class="section" style="min-height: 80vh; display: flex; align-items: center;">
+  <div class="container" style="text-align: center;">
+    <p class="code-comment" style="margin-bottom: 1rem;">// error</p>
+
+    <div style="background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; text-align: left; font-family: var(--font-mono);">
+      <p style="color: var(--text-muted); margin-bottom: 0.5rem;">$ node server.js</p>
+      <p style="color: #ef4444; word-break: break-word;">Error: <%= typeof message !== 'undefined' ? message : 'An unexpected error occurred' %></p>
+    </div>
+
+    <h1 class="gradient-text" style="font-size: 4rem; font-weight: 800; line-height: 1; margin-bottom: 1rem;">Oops!</h1>
+    <h2 class="section-title" style="margin-bottom: 1rem;">Something went wrong</h2>
+    <p class="section-subtitle" style="margin: 0 auto 2rem; max-width: 500px;">
+      <%= typeof message !== 'undefined' ? message : 'An unexpected error occurred' %>
+    </p>
+
+    <% if (typeof error !== 'undefined' && error && error.stack && process.env.NODE_ENV === 'development') { %>
+    <div style="margin-bottom: 2rem; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto;">
+      <pre style="background: var(--card); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.75rem; color: #ef4444; white-space: pre-wrap; word-break: break-word;"><%= error.stack %></pre>
+    </div>
+    <% } %>
+
+    <a href="/" class="btn btn-primary">Back to Home</a>
+  </div>
+</section>
+

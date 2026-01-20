@@ -1,0 +1,106 @@
+<!-- Project Hero Section -->
+<section class="section project-hero">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <span class="code-comment">// case_study/<%= project.slug %></span>
+            <h1 class="section-title"><%= project.title %></h1>
+            <p class="section-subtitle"><%= project.description %></p>
+        </div>
+        <div class="project-tech-tags animate-on-scroll">
+            <% project.technologies.forEach(tech => { %>
+                <span class="tech-tag"><%= tech %></span>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Project Details as README -->
+<section class="section project-details">
+    <div class="container">
+        <div class="terminal-card animate-on-scroll">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                </div>
+                <span class="terminal-title">README.md</span>
+            </div>
+            <div class="terminal-body readme-content">
+                <div class="readme-section">
+                    <p><span class="syntax-comment"># Overview</span></p>
+                    <p><%= project.description %></p>
+                </div>
+
+                <div class="readme-section">
+                    <p><span class="syntax-comment"># Challenges</span></p>
+                    <% project.challenges.forEach(challenge => { %>
+                        <p><span class="syntax-keyword">-</span> <%= challenge %></p>
+                    <% }) %>
+                </div>
+
+                <div class="readme-section">
+                    <p><span class="syntax-comment"># Solutions</span></p>
+                    <% project.solutions.forEach(solution => { %>
+                        <p><span class="syntax-type">✓</span> <%= solution %></p>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results as Code Block -->
+<section class="section project-results">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <span class="code-comment">// results.metrics()</span>
+            <h2 class="section-title">Results</h2>
+        </div>
+
+        <div class="code-block animate-on-scroll">
+            <div class="code-block-header">
+                <span class="code-block-filename">results.json</span>
+            </div>
+            <div class="code-block-body">
+                <pre>{
+  <span class="syntax-variable">"metrics"</span>: {<% project.results.forEach((result, index) => { %>
+    <span class="syntax-variable">"<%= result.metric.toLowerCase().replace(/\s+/g, '_') %>"</span>: <span class="syntax-string">"<%= result.value %>"</span><% if (index < project.results.length - 1) { %>,<% } %><% }) %>
+  },
+  <span class="syntax-variable">"status"</span>: <span class="syntax-string">"success"</span>
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="section project-stack">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <span class="code-comment">// stack.list()</span>
+            <h2 class="section-title">Tech Stack</h2>
+        </div>
+
+        <div class="code-block animate-on-scroll">
+            <div class="code-block-header">
+                <span class="code-block-filename">package.json</span>
+            </div>
+            <div class="code-block-body">
+                <pre>{
+  <span class="syntax-variable">"dependencies"</span>: {<% project.technologies.forEach((tech, index) => { %>
+    <span class="syntax-variable">"<%= tech.toLowerCase().replace(/\s+/g, '-').replace(/[.]/g, '') %>"</span>: <span class="syntax-string">"latest"</span><% if (index < project.technologies.length - 1) { %>,<% } %><% }) %>
+  }
+}</pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation -->
+<section class="section project-nav">
+    <div class="container">
+        <a href="/projects" class="btn btn-secondary">cd ../projects</a>
+    </div>
+</section>
+

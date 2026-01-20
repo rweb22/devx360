@@ -1,0 +1,58 @@
+<!-- Projects Hero Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <span class="code-comment">// import { projects } from '@devx360/portfolio'</span>
+            <h1 class="section-title">projects.list()</h1>
+            <p class="section-subtitle">Selected case studies from our portfolio</p>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid Section -->
+<section class="section">
+    <div class="container">
+        <div class="projects-grid">
+            <% projects.forEach((project, index) => { %>
+                <a href="/projects/<%= project.slug %>" class="code-block project-code-block animate-on-scroll">
+                    <div class="code-block-header">
+                        <span class="code-block-filename">project_<%= String(index + 1).padStart(2, '0') %>.ts</span>
+                    </div>
+                    <div class="code-block-body">
+                        <div class="project-code-content">
+                            <pre><span class="syntax-keyword">export const</span> <span class="syntax-variable">project</span> = {
+  <span class="syntax-variable">name</span>: <span class="syntax-string">"<%= project.title %>"</span>,
+  <span class="syntax-variable">desc</span>: <span class="syntax-string">"<%= project.description.substring(0, 60) %>..."</span>,
+  <span class="syntax-variable">stack</span>: [<% if (project.technologies && project.technologies.length > 0) { %><% project.technologies.slice(0, 3).forEach((tech, i) => { %><span class="syntax-string">"<%= tech %>"</span><% if (i < Math.min(project.technologies.length, 3) - 1) { %>, <% } %><% }) %><% } %>]
+};</pre>
+                        </div>
+                        <div class="project-view-link">
+                            <span class="syntax-comment">// click to view case study →</span>
+                        </div>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-content animate-on-scroll">
+            <div class="code-block">
+                <div class="code-block-header">
+                    <span class="code-block-filename">new_project.sh</span>
+                </div>
+                <div class="code-block-body">
+                    <pre><span class="syntax-comment"># Have a project in mind?</span>
+<span class="syntax-keyword">$</span> <span class="syntax-function">devx360</span> project --new</pre>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="/contact" class="btn btn-primary">./contact --new</a>
+            </div>
+        </div>
+    </div>
+</section>
+
