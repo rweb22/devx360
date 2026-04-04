@@ -150,6 +150,19 @@ function renderFashion(res, page, title) {
   });
 }
 
+// Helper to render client-specific demos
+function renderClient(res, clientName, page, title) {
+  res.app.render(`tenants/clients/${clientName}/${page}`, {}, (err, html) => {
+    if (err) return res.status(500).send(err.message);
+    res.render(`tenants/clients/${clientName}/layout`, {
+      title,
+      page,
+      body: html,
+      layout: false
+    });
+  });
+}
+
 // Middleware to prevent cross-demo access when on a subdomain
 function preventCrossDemoAccess(allowedTheme) {
   return (req, res, next) => {
@@ -243,6 +256,20 @@ router.get('/fashion/about', preventCrossDemoAccess('fashion'), (req, res) => {
 
 router.get('/fashion/contact', preventCrossDemoAccess('fashion'), (req, res) => {
   renderFashion(res, 'contact', 'Contact | Élégance');
+});
+
+// Client-specific demo routes
+// Example client demo
+router.get('/client/example-client', (req, res) => {
+  renderClient(res, 'example-client', 'home', 'Example Client Demo | Home');
+});
+
+router.get('/client/example-client/features', (req, res) => {
+  renderClient(res, 'example-client', 'features', 'Features | Example Client');
+});
+
+router.get('/client/example-client/contact', (req, res) => {
+  renderClient(res, 'example-client', 'contact', 'Contact | Example Client');
 });
 
 // Home page for demo tenants (fallback for old single-page demos)

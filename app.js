@@ -74,8 +74,8 @@ app.use((req, res, next) => {
     return next();
   }
 
-  // If path starts with demo routes, use tenant router
-  if (req.path.startsWith('/healthcare') || req.path.startsWith('/jewelry') || req.path.startsWith('/realestate') || req.path.startsWith('/fashion')) {
+  // If path starts with demo routes or client routes, use tenant router
+  if (req.path.startsWith('/healthcare') || req.path.startsWith('/jewelry') || req.path.startsWith('/realestate') || req.path.startsWith('/fashion') || req.path.startsWith('/client/')) {
     return tenantRouter.handle(req, res, next);
   }
 
