@@ -1,0 +1,16 @@
+# Client Demos Configuration
+# 
+# Add one client folder name per line to enable it
+# Comment out (add #) or delete line to disable
+#
+# Format: just the folder name from views/tenants/clients/{folder-name}/
+#
+# Examples:
+#   techcorp
+#   acmecorp
+#   example-client
+#
+# Lines starting with # are ignored
+# Empty lines are ignored
+
+example-client

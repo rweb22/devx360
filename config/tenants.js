@@ -5,6 +5,9 @@
  * Includes permanent showcase demos and client-specific demos.
  */
 
+const fs = require('fs');
+const path = require('path');
+
 // =============================================================================
 // Permanent Tenants (Hardcoded)
 // =============================================================================
@@ -84,39 +87,65 @@ const PERMANENT_TENANTS = {
 };
 
 // =============================================================================
-// Client-Specific Demos (Enable/Disable Here)
+// Client-Specific Demos (Auto-loaded from config/clients.txt)
 // =============================================================================
 
 /**
- * Client demos configuration
+ * Load enabled client demos from config/clients.txt
  *
- * To add a new client:
- * 1. Create folder: views/tenants/clients/{client-folder-name}/
- * 2. Add your files: layout.ejs, home.ejs, etc.
- * 3. Enable below with folder name and display name
+ * Each line in the file should be a client folder name
+ * Lines starting with # are ignored (comments)
+ * Empty lines are ignored
  *
- * The system will automatically:
- * - Create routes for all .ejs files (except layout.ejs)
- * - Use layout.ejs as the wrapper
- * - Make accessible at /client/{client-folder-name}
+ * Example clients.txt:
+ *   # My active clients
+ *   techcorp
+ *   acmecorp
+ *   example-client
  */
-const CLIENT_DEMOS = {
-  // Example client (keep as template)
-  'example-client': {
-    name: 'Example Client Demo',
-    enabled: true  // Set to false to disable
+function loadEnabledClientsFromFile() {
+  const clientsFile = path.join(__dirname, 'clients.txt');
+  const enabledClients = {};
+
+  try {
+    const content = fs.readFileSync(clientsFile, 'utf8');
+    const lines = content.split('\n');
+
+    lines.forEach((line, index) => {
+      // Trim whitespace
+      line = line.trim();
+
+      // Skip empty lines and comments
+      if (!line || line.startsWith('#')) {
+        return;
+      }
+
+      // Validate client name (alphanumeric, hyphens, underscores only)
+      if (!/^[a-z0-9-_]+$/i.test(line)) {
+        console.warn(`[Tenants] Invalid client name on line ${index + 1}: "${line}" (skipping)`);
+        return;
+      }
+
+      enabledClients[line] = {
+        name: line.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+        enabled: true
+      };
+    });
+
+    console.log(`[Tenants] Loaded ${Object.keys(enabledClients).length} client(s) from clients.txt`);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      console.warn('[Tenants] clients.txt not found - no client demos loaded');
+    } else {
+      console.error('[Tenants] Error reading clients.txt:', error.message);
+    }
   }
 
-  // Add your clients here:
-  // 'acmecorp': {
-  //   name: 'ACME Corporation',
-  //   enabled: true
-  // },
-  // 'techco': {
-  //   name: 'Tech Company',
-  //   enabled: true
-  // }
-};
+  return enabledClients;
+}
+
+// Load clients from file
+const CLIENT_DEMOS = loadEnabledClientsFromFile();
 
 
 
@@ -130,9 +159,24 @@ const CLIENT_DEMOS = {
  * @returns {Object|null} Tenant configuration or null if not found
  */
 function getTenant(subdomain) {
+  // Check permanent tenants first
   if (PERMANENT_TENANTS[subdomain]) {
     return PERMANENT_TENANTS[subdomain];
   }
+
+  // Check client demos
+  if (CLIENT_DEMOS[subdomain] && CLIENT_DEMOS[subdomain].enabled) {
+    return {
+      id: subdomain,
+      name: CLIENT_DEMOS[subdomain].name,
+      subdomain: subdomain,
+      type: 'client',
+      theme: subdomain,
+      description: `Custom demo for ${CLIENT_DEMOS[subdomain].name}`,
+      enabled: true
+    };
+  }
+
   return null;
 }
 

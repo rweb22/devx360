@@ -223,13 +223,26 @@ router.get('/fashion/contact', preventCrossDemoAccess('fashion'), (req, res) => 
 // Client-specific demo routes are auto-discovered below
 // No need to manually add routes - just enable in config/tenants.js!
 
-// Home page for demo tenants - redirect to appropriate demo
+// Home page for demo tenants
 router.get('/', (req, res) => {
   const tenant = req.tenant;
 
   if (!tenant || tenant.type === 'main') {
     // Not a demo tenant, pass to main routes
     return res.redirect('/');
+  }
+
+  // Client-specific demo (subdomain-based)
+  if (tenant.type === 'client') {
+    const clientId = tenant.theme;
+
+    // Check if client is enabled
+    if (!isClientEnabled(clientId)) {
+      return res.status(404).send('Client demo not available');
+    }
+
+    // Render client home page
+    return renderClient(res, clientId, 'home', `${tenant.name} | Home`);
   }
 
   // Redirect to appropriate multi-page demo based on theme
@@ -260,8 +273,9 @@ router.get('/', (req, res) => {
 /**
  * Automatically create routes for all enabled client demos
  *
- * This scans views/tenants/clients/{client}/ for .ejs files and creates routes
- * No need to manually add routes - just enable in config/tenants.js!
+ * Creates two types of routes:
+ * 1. Subdomain routes: clientname.devx360.in/page
+ * 2. Path routes: devx360.in/client/clientname/page (fallback)
  */
 (function registerClientDemoRoutes() {
   const enabledClients = getEnabledClients();
@@ -285,32 +299,43 @@ router.get('/', (req, res) => {
       continue;
     }
 
-    // Register routes for each page (except layout.ejs)
+    // Register routes for each page (except layout.ejs and home.ejs)
     files.forEach(file => {
       const pageName = file.replace('.ejs', '');
 
-      // Skip layout file
-      if (pageName === 'layout') return;
-
-      // Create route path
-      const routePath = pageName === 'home'
-        ? `/client/${clientId}`
-        : `/client/${clientId}/${pageName}`;
+      // Skip layout file and home (home is handled by root route)
+      if (pageName === 'layout' || pageName === 'home') return;
 
       // Create page title
-      const pageTitle = pageName === 'home'
-        ? `${config.name} | Home`
-        : `${pageName.charAt(0).toUpperCase() + pageName.slice(1)} | ${config.name}`;
+      const pageTitle = `${pageName.charAt(0).toUpperCase() + pageName.slice(1)} | ${config.name}`;
 
-      // Register the route
-      router.get(routePath, (req, res) => {
-        // Check if client is still enabled (safety check)
+      // Register subdomain route: clientname.devx360.in/pagename
+      router.get(`/${pageName}`, (req, res, next) => {
+        // Only handle if this is the correct client subdomain
+        if (req.tenant && req.tenant.type === 'client' && req.tenant.theme === clientId) {
+          if (!isClientEnabled(clientId)) {
+            return res.status(404).send('Client demo not available');
+          }
+          return renderClient(res, clientId, pageName, pageTitle);
+        }
+        next();
+      });
+
+      // Also register fallback path route: devx360.in/client/clientname/pagename
+      router.get(`/client/${clientId}/${pageName}`, (req, res) => {
         if (!isClientEnabled(clientId)) {
           return res.status(404).send('Client demo not available');
         }
-
         renderClient(res, clientId, pageName, pageTitle);
       });
+    });
+
+    // Register fallback path route for home: devx360.in/client/clientname
+    router.get(`/client/${clientId}`, (req, res) => {
+      if (!isClientEnabled(clientId)) {
+        return res.status(404).send('Client demo not available');
+      }
+      renderClient(res, clientId, 'home', `${config.name} | Home`);
     });
 
     console.log(`[Routes] ✓ Registered routes for client: ${clientId} (${files.length - 1} pages)`);

@@ -1,45 +1,37 @@
 # ⚡ Super Simple Client Demo Setup
 
-## The ONLY 2 Steps You Need
+## The SIMPLEST Way Possible
 
-### Step 1: Create Client Folder with Files
+### Option 1: Use CLI (ONE Command - EASIEST!)
 
-**Option A: Use CLI (Recommended)**
 ```bash
-./scripts/create-client.sh clientname "Client Name" "#color"
+./scripts/create-client.sh techcorp "TechCorp Inc" "#2563eb"
 ```
 
-**Option B: Manual**
-```bash
-mkdir -p views/tenants/clients/myclient
-# Add your files: layout.ejs, home.ejs, etc.
-```
+**That's it!** The script:
+- ✅ Creates the folder and files
+- ✅ Adds to `config/clients.txt` automatically
+- ✅ Done!
+
+Restart server and visit: **`http://techcorp.localhost:3000`**
 
 ---
 
-### Step 2: Enable in ONE Place
+### Option 2: Manual (2 Steps)
 
-Edit **`config/tenants.js`** and add your client:
-
-```javascript
-const CLIENT_DEMOS = {
-  'example-client': {
-    name: 'Example Client Demo',
-    enabled: true
-  },
-  
-  // 👇 Add your client here
-  'myclient': {
-    name: 'My Client Name',
-    enabled: true  // ✅ Turn on
-  }
-};
+**Step 1:** Create folder with files
+```bash
+mkdir -p views/tenants/clients/myclient
+# Add: layout.ejs, home.ejs, etc.
 ```
 
-**That's it!** Restart the server and visit:
+**Step 2:** Add one line to `config/clients.txt`
 ```
-http://localhost:3000/client/myclient
+example-client
+myclient
 ```
+
+**That's it!** Restart server and visit: **`http://myclient.localhost:3000`**
 
 ---
 
@@ -81,59 +73,56 @@ views/tenants/clients/myclient/
 
 ## 🔌 Enable/Disable Clients
 
-In `config/tenants.js`:
+Edit **`config/clients.txt`**:
 
-```javascript
-const CLIENT_DEMOS = {
-  'client-a': {
-    name: 'Client A',
-    enabled: true   // ✅ Active
-  },
-  'client-b': {
-    name: 'Client B',
-    enabled: false  // ❌ Disabled (404)
-  },
-  'client-c': {
-    name: 'Client C',
-    enabled: true   // ✅ Active
-  }
-};
+```txt
+# Active clients (uncommented)
+techcorp
+acmecorp
+
+# Disabled client (commented out or delete line)
+# oldclient
 ```
 
-**Just flip the boolean!** No code changes needed.
+**To enable:** Add line with client name
+**To disable:** Comment out (#) or delete the line
+
+That's it!
 
 ---
 
 ## 🚀 Complete Example
 
-### 1. Create Client
+### 1. Create Client (ONE Command)
 
 ```bash
 ./scripts/create-client.sh techcorp "TechCorp Inc" "#2563eb"
 ```
 
-### 2. Enable Client
-
-Edit `config/tenants.js`:
-```javascript
-const CLIENT_DEMOS = {
-  'example-client': { name: 'Example Client Demo', enabled: true },
-  'techcorp': { name: 'TechCorp Inc', enabled: true }  // ← Add this
-};
+Output:
+```
+✅ Added to config/clients.txt
+✅ Client demo created successfully!
 ```
 
-### 3. Restart Server
+### 2. Restart Server
 
 ```bash
 npm start
 ```
 
-### 4. Done! ✅
+### 3. Done! ✅
 
+Visit subdomain:
+```
+http://techcorp.localhost:3000
+http://techcorp.localhost:3000/features
+http://techcorp.localhost:3000/contact
+```
+
+Or fallback path:
 ```
 http://localhost:3000/client/techcorp
-http://localhost:3000/client/techcorp/features
-http://localhost:3000/client/techcorp/contact
 ```
 
 ---
