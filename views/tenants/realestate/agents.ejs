@@ -24,14 +24,14 @@
                         <div style="width: 140px; height: 140px; background: white; border-radius: 50%; border: 5px solid white; margin-bottom: -70px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">👤</div>
                     </div>
                     <div style="padding: 4.5rem 2rem 2rem; text-align: center;">
-                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem; color: var(--realestate-dark);"><%= agent.name %></h3>
-                        <p style="color: var(--realestate-primary); font-weight: 600; margin-bottom: 1.5rem;"><%= agent.title %></p>
+                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem; color: #0f172a;"><%= agent.name %></h3>
+                        <p style="color: #2563eb; font-weight: 600; margin-bottom: 1.5rem;"><%= agent.title %></p>
                         <div style="display: grid; gap: 0.75rem; margin-bottom: 1.5rem; color: #64748b;">
                             <div>🏆 <%= agent.sales %></div>
                             <div>⭐ <%= agent.rating %> Rating</div>
                             <div>📞 (555) 123-<%= Math.floor(1000 + Math.random() * 9000) %></div>
                         </div>
-                        <a href="/realestate/contact" style="display: block; background: var(--realestate-primary); color: white; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Contact Agent</a>
+                        <a href="/realestate/contact" style="display: block; background: #2563eb; color: white; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Contact Agent</a>
                     </div>
                 </div>
             <% }); %>

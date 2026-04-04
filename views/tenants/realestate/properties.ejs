@@ -25,7 +25,7 @@
                     <div style="height: 250px; background: <%= prop.bg %>; display: flex; align-items: center; justify-content: center; font-size: 5rem;"><%= prop.emoji %></div>
                     <div style="padding: 2rem;">
                         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <h3 style="font-size: 1.5rem; color: var(--realestate-dark);"><%= prop.name %></h3>
+                            <h3 style="font-size: 1.5rem; color: #0f172a;"><%= prop.name %></h3>
                             <span style="background: <%= prop.type === 'SALE' ? '#dcfce7' : '#dbeafe' %>; color: <%= prop.type === 'SALE' ? '#166534' : '#1e40af' %>; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.875rem; font-weight: 600;">FOR <%= prop.type %></span>
                         </div>
                         <p style="color: #64748b; margin-bottom: 1rem;">📍 <%= prop.location %></p>
@@ -35,8 +35,8 @@
                             <span>📐 <%= prop.sqft %> sqft</span>
                         </div>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-size: 2rem; font-weight: 700; color: var(--realestate-primary);"><%= prop.price %></span>
-                            <button style="background: var(--realestate-primary); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;" onclick="alert('This is a demo. In production, this would show property details!')">Details</button>
+                            <span style="font-size: 2rem; font-weight: 700; color: #2563eb;"><%= prop.price %></span>
+                            <button style="background: #2563eb; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;" onclick="alert('This is a demo. In production, this would show property details!')">Details</button>
                         </div>
                     </div>
                 </div>
