@@ -29,6 +29,13 @@ router.get('/contact', (req, res) => {
   });
 });
 
+// Demos page
+router.get('/demos', (req, res) => {
+  res.render('pages/demos', {
+    title: 'Live Demos | DevX360'
+  });
+});
+
 // Admin login page
 router.get('/admin/login', (req, res) => {
   res.render('pages/admin-login', {
