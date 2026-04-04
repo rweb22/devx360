@@ -27,44 +27,98 @@ https://devx360.vercel.app/client/example-client
 
 ---
 
-## ✅ Option 2: Add Custom Domain (Enables Subdomains)
+## ✅ Option 2: Add Custom Domain (Enables Subdomains) - RECOMMENDED!
 
-If you own `devx360.in` and want subdomain routing:
+**This works on Vercel FREE tier (Hobby plan)!**
 
-### Step 1: Add Domain to Vercel
+### What You Need:
+- A domain from GoDaddy, Namecheap, Cloudflare, etc. (~$12-15/year)
+- Examples: `devx360.com`, `devx360.io`, `yourname.dev`
+
+### Step 1: Buy a Domain
+
+From any registrar:
+- **GoDaddy**: godaddy.com
+- **Namecheap**: namecheap.com
+- **Cloudflare**: cloudflare.com
+- **Google Domains**: domains.google.com
+
+Cost: ~$12-15/year
+
+### Step 2: Add Domain to Vercel (FREE!)
 
 1. Go to your Vercel project
-2. Settings → Domains
-3. Add `devx360.in`
-4. Add `*.devx360.in` (wildcard subdomain)
+2. **Settings → Domains**
+3. Click **"Add Domain"**
+4. Add your root domain: `devx360.com`
+5. Click **"Add Domain"** again
+6. Add wildcard: `*.devx360.com`
+7. Vercel will show DNS configuration
 
-### Step 2: Configure DNS
+### Step 3: Configure DNS at Your Registrar
 
-Update your DNS provider (Namecheap, Cloudflare, etc.):
+**Go to your domain registrar's DNS settings** (GoDaddy, Namecheap, etc.):
 
-```
-Type    Name    Value
-A       @       76.76.21.21
-CNAME   *       cname.vercel-dns.com
-```
-
-### Step 3: Update Environment Variables
-
-In Vercel dashboard:
-```
-BASE_DOMAIN=devx360.in
-BASE_URL=https://devx360.in
-```
-
-### Result:
+Add these DNS records:
 
 ```
-https://devx360.in                 (main site)
-https://healthcare.devx360.in      (healthcare demo)
-https://jewelry.devx360.in         (jewelry demo)
-https://realestate.devx360.in      (real estate demo)
-https://fashion.devx360.in         (fashion demo)
+Type    Name/Host    Value/Points To         TTL
+A       @            76.76.21.21             Auto
+CNAME   *            cname.vercel-dns.com    Auto
 ```
+
+**Important:**
+- `@` means root domain (devx360.com)
+- `*` means all subdomains (*.devx360.com)
+- TTL can be Auto or 3600
+
+**GoDaddy Instructions:**
+1. Log in to GoDaddy
+2. My Products → Domains → DNS
+3. Add Record → Type: A, Name: @, Value: 76.76.21.21
+4. Add Record → Type: CNAME, Name: *, Value: cname.vercel-dns.com
+
+### Step 4: Update Environment Variables in Vercel
+
+Vercel Dashboard → Settings → Environment Variables:
+
+```
+BASE_DOMAIN=devx360.com
+BASE_URL=https://devx360.com
+BRAND_NAME=DevX360
+BRAND_EMAIL=contact@devx360.com
+```
+
+Click **Save** and **Redeploy**.
+
+### Step 5: Wait for DNS Propagation
+
+- Usually: 5-30 minutes
+- Can take: Up to 48 hours (rare)
+
+Check status: https://www.whatsmydns.net/#A/devx360.com
+
+### Result - Subdomain Routing Works! 🎉
+
+```
+https://devx360.com                 (main site) ✅
+https://healthcare.devx360.com      (healthcare demo) ✅
+https://jewelry.devx360.com         (jewelry demo) ✅
+https://realestate.devx360.com      (real estate demo) ✅
+https://fashion.devx360.com         (fashion demo) ✅
+```
+
+**All with FREE SSL certificates!**
+
+### Cost Summary:
+
+| Item | Cost |
+|------|------|
+| Domain (yearly) | $12-15 |
+| Vercel Hosting | FREE |
+| SSL Certificates | FREE |
+| Wildcard Subdomains | FREE |
+| **Total per year** | **$12-15** |
 
 ---
 
