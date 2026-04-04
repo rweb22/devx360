@@ -8,7 +8,8 @@
     "dev": "concurrently \"node --watch app.js\" \"npm run css:watch\"",
     "build": "npm run css:build",
     "css:build": "./node_modules/.bin/tailwindcss -i ./src/input.css -o ./public/css/styles.css --minify",
-    "css:watch": "./node_modules/.bin/tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch"
+    "css:watch": "./node_modules/.bin/tailwindcss -i ./src/input.css -o ./public/css/styles.css --watch",
+    "generate-password": "node scripts/generate-password-hash.js"
   },
   "keywords": [
     "express",
