@@ -124,45 +124,56 @@ function renderJewelry(res, page, title) {
   });
 }
 
+// Middleware to prevent cross-demo access when on a subdomain
+function preventCrossDemoAccess(allowedTheme) {
+  return (req, res, next) => {
+    // If accessing via subdomain and tenant theme doesn't match the route
+    if (req.tenant && req.tenant.type === 'demo' && req.tenant.theme !== allowedTheme) {
+      return res.status(404).send('Page not found');
+    }
+    next();
+  };
+}
+
 // Healthcare routes
-router.get('/healthcare', (req, res) => {
+router.get('/healthcare', preventCrossDemoAccess('healthcare'), (req, res) => {
   renderHealthcare(res, 'home', 'MediCare Plus | Modern Healthcare Management');
 });
 
-router.get('/healthcare/services', (req, res) => {
+router.get('/healthcare/services', preventCrossDemoAccess('healthcare'), (req, res) => {
   renderHealthcare(res, 'services', 'Our Services | MediCare Plus');
 });
 
-router.get('/healthcare/doctors', (req, res) => {
+router.get('/healthcare/doctors', preventCrossDemoAccess('healthcare'), (req, res) => {
   renderHealthcare(res, 'doctors', 'Our Doctors | MediCare Plus');
 });
 
-router.get('/healthcare/appointments', (req, res) => {
+router.get('/healthcare/appointments', preventCrossDemoAccess('healthcare'), (req, res) => {
   renderHealthcare(res, 'appointments', 'Book Appointment | MediCare Plus');
 });
 
-router.get('/healthcare/contact', (req, res) => {
+router.get('/healthcare/contact', preventCrossDemoAccess('healthcare'), (req, res) => {
   renderHealthcare(res, 'contact', 'Contact Us | MediCare Plus');
 });
 
 // Jewelry routes
-router.get('/jewelry', (req, res) => {
+router.get('/jewelry', preventCrossDemoAccess('jewelry'), (req, res) => {
   renderJewelry(res, 'home', 'Lumière | Exquisite Fine Jewelry');
 });
 
-router.get('/jewelry/collections', (req, res) => {
+router.get('/jewelry/collections', preventCrossDemoAccess('jewelry'), (req, res) => {
   renderJewelry(res, 'collections', 'Collections | Lumière');
 });
 
-router.get('/jewelry/engagement', (req, res) => {
+router.get('/jewelry/engagement', preventCrossDemoAccess('jewelry'), (req, res) => {
   renderJewelry(res, 'engagement', 'Engagement Rings | Lumière');
 });
 
-router.get('/jewelry/about', (req, res) => {
+router.get('/jewelry/about', preventCrossDemoAccess('jewelry'), (req, res) => {
   renderJewelry(res, 'about', 'About Us | Lumière');
 });
 
-router.get('/jewelry/contact', (req, res) => {
+router.get('/jewelry/contact', preventCrossDemoAccess('jewelry'), (req, res) => {
   renderJewelry(res, 'contact', 'Contact | Lumière');
 });
 
