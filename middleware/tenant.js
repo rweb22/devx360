@@ -14,20 +14,25 @@ const { getTenant, refreshTemporaryTenants } = require('../config/tenants');
  * @returns {string} Subdomain or empty string for root domain
  */
 function extractSubdomain(hostname, baseDomain) {
+  // Remove port if present
+  const host = hostname.split(':')[0];
+
   // Handle localhost for development
-  if (hostname === 'localhost' || hostname.startsWith('localhost:')) {
+  if (host === 'localhost') {
     return '';
   }
 
-  // Remove port if present
-  const host = hostname.split(':')[0];
+  // Handle *.localhost pattern for development (e.g., restaurant.localhost)
+  if (host.endsWith('.localhost')) {
+    return host.replace('.localhost', '');
+  }
 
   // If it's the base domain or www, return appropriate subdomain
   if (host === baseDomain || host === `www.${baseDomain}`) {
     return host === `www.${baseDomain}` ? 'www' : '';
   }
 
-  // Extract subdomain
+  // Extract subdomain for production (e.g., restaurant.devx360.in)
   const domainPattern = new RegExp(`\\.${baseDomain.replace('.', '\\.')}$`);
   if (domainPattern.test(host)) {
     return host.replace(domainPattern, '');
