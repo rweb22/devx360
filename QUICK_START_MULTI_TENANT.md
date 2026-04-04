@@ -72,20 +72,15 @@ https://a.devx360.in
 https://b.devx360.in
 ```
 
-### Admin API
-```bash
-# List all tenants
-curl https://devx360.in/api/admin/tenants \
-  -H "X-API-Key: your-api-key"
-
-# Refresh temporary tenants
-curl -X POST https://devx360.in/api/admin/tenants/refresh \
-  -H "X-API-Key: your-api-key"
-
-# Health check
-curl https://devx360.in/api/admin/health \
-  -H "X-API-Key: your-api-key"
+### Admin Dashboard
 ```
+https://devx360.in/admin/login
+
+Default password (development): admin
+Production: Set ADMIN_PASSWORD_HASH in environment
+```
+
+See **[ADMIN_AUTH_GUIDE.md](ADMIN_AUTH_GUIDE.md)** for authentication setup.
 
 ## 📝 Managing Temporary Tenants
 
@@ -184,9 +179,10 @@ See **[MULTI_TENANT_SETUP.md](MULTI_TENANT_SETUP.md)** for complete documentatio
 - Validate JSON syntax in tenants.json
 - Call /api/admin/tenants/refresh
 
-### Admin API returns 401
-- Set ADMIN_API_KEY environment variable
-- Include X-API-Key header in requests
+### Admin panel shows "Invalid password"
+- Check ADMIN_PASSWORD_HASH is set correctly
+- In development, default password is "admin"
+- See ADMIN_AUTH_GUIDE.md for password setup
 
 ## 💰 Cost
 

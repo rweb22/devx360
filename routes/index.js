@@ -29,5 +29,21 @@ router.get('/contact', (req, res) => {
   });
 });
 
+// Admin login page
+router.get('/admin/login', (req, res) => {
+  res.render('pages/admin-login', {
+    title: 'Admin Login | DevX360',
+    layout: false // No layout for login page
+  });
+});
+
+// Admin dashboard page
+router.get('/admin/dashboard', (req, res) => {
+  res.render('pages/admin-dashboard', {
+    title: 'Admin Dashboard | DevX360',
+    layout: false // No layout for dashboard
+  });
+});
+
 module.exports = router;
 

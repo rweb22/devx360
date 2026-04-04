@@ -7,6 +7,7 @@
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
+const cookieParser = require('cookie-parser');
 
 // Import tenant system
 const { initialize: initializeTenants } = require('./config/tenants');
@@ -46,6 +47,9 @@ app.use(express.json());
 
 // Parse URL-encoded request bodies
 app.use(express.urlencoded({ extended: false }));
+
+// Parse cookies
+app.use(cookieParser());
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));

@@ -144,26 +144,97 @@ To add or remove temporary tenants:
 1. Edit your GitHub Gist
 2. Update the `tenants.json` content
 3. Save the gist
-4. Wait up to 5 minutes for auto-refresh OR call the refresh API:
+4. Wait up to 5 minutes for auto-refresh OR use the admin dashboard
 
-```bash
-curl -X POST http://devx360.in/api/admin/tenants/refresh \
-  -H "X-API-Key: your-admin-api-key"
+## Admin Dashboard
+
+### Access
+
+Navigate to:
 ```
+https://devx360.in/admin/login
+```
+
+### Authentication
+
+The admin panel uses **JWT (JSON Web Token)** authentication with auto-refresh:
+
+- **Token expiry**: 5 minutes
+- **Auto-refresh**: Every 4 minutes (while active)
+- **Session**: Maintained as long as you're active
+
+**Default Development Password**: `admin`
+**Production**: Set `ADMIN_PASSWORD_HASH` environment variable
+
+See **[ADMIN_AUTH_GUIDE.md](ADMIN_AUTH_GUIDE.md)** for detailed authentication setup.
+
+### Quick Setup
+
+1. **Generate JWT Secret**:
+   ```bash
+   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+   ```
+
+2. **Generate Password Hash** (replace 'YourPassword'):
+   ```bash
+   node -e "const bcrypt = require('bcryptjs'); bcrypt.hash('YourPassword', 10).then(console.log)"
+   ```
+
+3. **Set Environment Variables**:
+   - `JWT_SECRET_KEY` = (generated secret)
+   - `ADMIN_PASSWORD_HASH` = (generated hash)
+
+4. **Login**:
+   - Visit https://devx360.in/admin/login
+   - Enter your password
+   - Access the dashboard
+
+### Dashboard Features
+
+- View all active tenants (permanent + temporary)
+- Refresh temporary tenants from GitHub Gist
+- Real-time session status
+- Auto-refresh JWT (keeps you logged in while active)
 
 ## Admin API Endpoints
 
 ### Authentication
 
-All admin endpoints require an API key. Include it as:
-- Header: `X-API-Key: your-secret-key`
-- Query param: `?apiKey=your-secret-key`
+All admin API endpoints require JWT authentication via `Authorization: Bearer <token>` header.
+
+Get token by logging in at `/api/admin/login`.
 
 ### Available Endpoints
 
-#### 1. List All Tenants
+#### 1. Login
+```bash
+POST /api/admin/login
+Content-Type: application/json
+
+{"password": "your-password"}
+```
+
+Response:
+```json
+{
+  "success": true,
+  "token": "eyJhbGc...",
+  "expiresIn": "5m"
+}
+```
+
+#### 2. Refresh Token
+```bash
+POST /api/admin/refresh
+Authorization: Bearer <token>
+```
+
+Response: New token with fresh 5-minute expiry
+
+#### 3. List All Tenants
 ```bash
 GET /api/admin/tenants
+Authorization: Bearer <token>
 ```
 
 Response:
@@ -175,23 +246,26 @@ Response:
 }
 ```
 
-#### 2. Refresh Temporary Tenants
+#### 4. Refresh Temporary Tenants
 ```bash
 POST /api/admin/tenants/refresh
+Authorization: Bearer <token>
 ```
 
 Forces immediate refresh from GitHub Gist.
 
-#### 3. Health Check
+#### 5. Health Check
 ```bash
 GET /api/admin/health
+Authorization: Bearer <token>
 ```
 
 Returns server health and configuration status.
 
-#### 4. Gist Setup Instructions
+#### 6. Gist Setup Instructions
 ```bash
 GET /api/admin/gist-instructions
+Authorization: Bearer <token>
 ```
 
 Returns detailed instructions for setting up GitHub Gist.
@@ -224,7 +298,8 @@ In DigitalOcean App Platform dashboard:
 
 1. Set `BASE_DOMAIN=devx360.in`
 2. Set `GIST_ID=your-gist-id` (optional)
-3. Set `ADMIN_API_KEY=your-secret-key` (optional but recommended)
+3. Set `JWT_SECRET_KEY=your-jwt-secret` (required for admin access)
+4. Set `ADMIN_PASSWORD_HASH=your-password-hash` (required for admin access)
 
 ### Step 3: Deploy
 
@@ -264,10 +339,18 @@ Edit `/etc/hosts` and access:
 3. Verify `tenants.json` format is valid JSON
 4. Call `/api/admin/tenants/refresh` to force refresh
 
-### Admin API returns 401
+### Admin login fails
 
-1. Set `ADMIN_API_KEY` environment variable
-2. Include API key in request header or query param
+1. Check `ADMIN_PASSWORD_HASH` is set correctly
+2. In development, default password is `admin`
+3. Regenerate password hash if needed
+4. See ADMIN_AUTH_GUIDE.md for detailed setup
+
+### JWT token expires immediately
+
+1. Check `JWT_SECRET_KEY` is configured
+2. Verify auto-refresh is working (check browser console)
+3. Clear localStorage and login again
 
 ## Cost
 

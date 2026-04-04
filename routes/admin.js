@@ -1,55 +1,103 @@
 /**
  * Admin API Routes
- * 
+ *
  * Provides API endpoints for managing temporary tenants
- * Requires API key authentication for security
+ * Requires JWT authentication for security
  */
 
 const express = require('express');
 const router = express.Router();
 const { getAllTenants, refreshTemporaryTenants } = require('../config/tenants');
+const { validatePassword, generateToken, requireAuth, JWT_EXPIRY } = require('../utils/auth');
 
 // =============================================================================
-// Authentication Middleware
+// Public Authentication Routes (No JWT required)
 // =============================================================================
 
 /**
- * Simple API key authentication
- * Set ADMIN_API_KEY environment variable to protect admin endpoints
+ * POST /api/admin/login
+ * Authenticate admin and get JWT token
  */
-function authenticateApiKey(req, res, next) {
-  const apiKey = process.env.ADMIN_API_KEY;
-  
-  // If no API key is set, skip authentication (for development)
-  if (!apiKey) {
-    console.warn('[Admin API] Warning: No ADMIN_API_KEY set. Admin endpoints are unprotected!');
-    return next();
-  }
+router.post('/login', async (req, res) => {
+  try {
+    const { password } = req.body;
 
-  const providedKey = req.headers['x-api-key'] || req.query.apiKey;
+    if (!password) {
+      return res.status(400).json({
+        success: false,
+        error: 'Password is required'
+      });
+    }
 
-  if (providedKey !== apiKey) {
-    return res.status(401).json({
+    // Validate password
+    const isValid = await validatePassword(password);
+
+    if (!isValid) {
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid password'
+      });
+    }
+
+    // Generate JWT token
+    const token = generateToken({
+      role: 'admin',
+      username: 'admin',
+      loginTime: new Date().toISOString()
+    });
+
+    res.json({
+      success: true,
+      token,
+      expiresIn: JWT_EXPIRY,
+      message: 'Login successful'
+    });
+  } catch (error) {
+    console.error('[Admin API] Login error:', error);
+    res.status(500).json({
       success: false,
-      error: 'Unauthorized: Invalid API key'
+      error: 'Internal server error'
     });
   }
+});
 
-  next();
-}
+/**
+ * POST /api/admin/refresh
+ * Refresh JWT token (extends session)
+ */
+router.post('/refresh', requireAuth, (req, res) => {
+  try {
+    // Generate new token with same payload
+    const token = generateToken({
+      role: req.user.role,
+      username: req.user.username,
+      loginTime: req.user.loginTime
+    });
 
-// Apply authentication to all admin routes
-router.use(authenticateApiKey);
+    res.json({
+      success: true,
+      token,
+      expiresIn: JWT_EXPIRY,
+      message: 'Token refreshed successfully'
+    });
+  } catch (error) {
+    console.error('[Admin API] Refresh error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error'
+    });
+  }
+});
 
 // =============================================================================
-// Admin Routes
+// Protected Admin Routes (JWT required)
 // =============================================================================
 
 /**
  * GET /api/admin/tenants
  * List all active tenants (permanent + temporary)
  */
-router.get('/tenants', (req, res) => {
+router.get('/tenants', requireAuth, (req, res) => {
   try {
     const tenants = getAllTenants();
     const tenantList = Object.entries(tenants).map(([subdomain, config]) => ({
@@ -74,7 +122,7 @@ router.get('/tenants', (req, res) => {
  * POST /api/admin/tenants/refresh
  * Force refresh temporary tenants from GitHub Gist
  */
-router.post('/tenants/refresh', async (req, res) => {
+router.post('/tenants/refresh', requireAuth, async (req, res) => {
   try {
     const gistId = process.env.GIST_ID;
 
@@ -103,15 +151,21 @@ router.post('/tenants/refresh', async (req, res) => {
  * GET /api/admin/health
  * Health check endpoint
  */
-router.get('/health', (req, res) => {
+router.get('/health', requireAuth, (req, res) => {
   res.json({
     success: true,
     status: 'healthy',
     timestamp: new Date().toISOString(),
+    user: {
+      username: req.user.username,
+      role: req.user.role,
+      loginTime: req.user.loginTime
+    },
     config: {
       gistId: process.env.GIST_ID ? 'configured' : 'not configured',
       baseDomain: process.env.BASE_DOMAIN || 'devx360.in',
-      adminApiKey: process.env.ADMIN_API_KEY ? 'configured' : 'not configured'
+      jwtSecret: process.env.JWT_SECRET_KEY ? 'configured' : 'not configured',
+      adminPassword: process.env.ADMIN_PASSWORD_HASH ? 'configured' : 'not configured (using default)'
     }
   });
 });
@@ -120,7 +174,7 @@ router.get('/health', (req, res) => {
  * GET /api/admin/gist-instructions
  * Returns instructions for setting up GitHub Gist
  */
-router.get('/gist-instructions', (req, res) => {
+router.get('/gist-instructions', requireAuth, (req, res) => {
   const instructions = {
     title: 'GitHub Gist Setup Instructions',
     steps: [
