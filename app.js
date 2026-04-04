@@ -1,8 +1,11 @@
 /**
  * DevX360 - Main Express.js Application
- * 
+ *
  * This is the entry point for the DevX360 application.
  */
+
+// Load environment variables from .env file
+require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
