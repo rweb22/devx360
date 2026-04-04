@@ -113,7 +113,7 @@ app.use('/api/admin', adminRouter);
 // 404 Error Handler - Catch requests to undefined routes
 app.use((req, res, next) => {
   res.status(404).render('pages/404', {
-    title: 'Page Not Found | DevX360',
+    title: `Page Not Found | ${res.locals.app.brandName}`,
     message: 'The page you are looking for does not exist.'
   });
 });
@@ -128,7 +128,7 @@ app.use((err, req, res, next) => {
 
   // Render error page
   res.status(statusCode).render('pages/error', {
-    title: 'Error | DevX360',
+    title: `Error | ${res.locals.app.brandName}`,
     message: err.message || 'An unexpected error occurred.',
     error: process.env.NODE_ENV === 'development' ? err : { status: statusCode }
   });

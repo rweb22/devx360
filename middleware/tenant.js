@@ -96,7 +96,7 @@ function requireTenant() {
   return (req, res, next) => {
     if (!req.tenant) {
       return res.status(404).render('pages/404', {
-        title: 'Tenant Not Found | DevX360',
+        title: `Tenant Not Found | ${res.locals.app.brandName}`,
         message: `The subdomain "${res.locals.subdomain}" does not exist or is not active.`
       });
     }

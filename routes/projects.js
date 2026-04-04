@@ -157,7 +157,7 @@ router.get('/', (req, res) => {
   }));
 
   res.render('pages/projects', {
-    title: 'Our Projects | DevX360',
+    title: `Our Projects | ${res.locals.app.brandName}`,
     projects: projectList
   });
 });
@@ -169,7 +169,7 @@ router.get('/:slug', (req, res) => {
 
   if (!projectData) {
     return res.status(404).render('pages/404', {
-      title: 'Project Not Found | DevX360',
+      title: `Project Not Found | ${res.locals.app.brandName}`,
       message: 'The project you are looking for does not exist.'
     });
   }
@@ -181,7 +181,7 @@ router.get('/:slug', (req, res) => {
   };
 
   res.render('pages/project', {
-    title: `${project.title} | DevX360`,
+    title: `${project.title} | ${res.locals.app.brandName}`,
     project
   });
 });
