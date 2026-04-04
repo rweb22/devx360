@@ -62,7 +62,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Tenant detection middleware (must come after body parsing)
 app.use(tenantMiddleware({
-  baseDomain: process.env.BASE_DOMAIN || 'devx360.in',
+  baseDomain: getAppConfig().baseDomain,
   gistId: process.env.GIST_ID || null
 }));
 
