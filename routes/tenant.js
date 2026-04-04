@@ -144,7 +144,41 @@ function getGenericDemoData(tenant) {
 // Routes
 // =============================================================================
 
-// Home page for demo tenants
+// Helper to render with restaurant layout
+function renderRestaurant(res, page, title) {
+  res.app.render(`tenants/restaurant/${page}`, {}, (err, html) => {
+    if (err) return res.status(500).send(err.message);
+    res.render('tenants/restaurant/layout', {
+      title,
+      page,
+      body: html,
+      layout: false
+    });
+  });
+}
+
+// Restaurant routes
+router.get('/restaurant', (req, res) => {
+  renderRestaurant(res, 'home', 'Tasty Bites Restaurant | Home');
+});
+
+router.get('/restaurant/menu', (req, res) => {
+  renderRestaurant(res, 'menu', 'Menu | Tasty Bites Restaurant');
+});
+
+router.get('/restaurant/reservations', (req, res) => {
+  renderRestaurant(res, 'reservations', 'Reservations | Tasty Bites Restaurant');
+});
+
+router.get('/restaurant/about', (req, res) => {
+  renderRestaurant(res, 'about', 'About Us | Tasty Bites Restaurant');
+});
+
+router.get('/restaurant/contact', (req, res) => {
+  renderRestaurant(res, 'contact', 'Contact Us | Tasty Bites Restaurant');
+});
+
+// Home page for demo tenants (fallback for old single-page demos)
 router.get('/', (req, res) => {
   const tenant = req.tenant;
 
@@ -153,27 +187,20 @@ router.get('/', (req, res) => {
     return res.redirect('/');
   }
 
-  let data;
-  let template = 'tenants/generic';
-
-  // Select appropriate data and template based on tenant theme
-  switch (tenant.theme) {
-    case 'restaurant':
-      data = restaurantData;
-      template = 'tenants/restaurant';
-      break;
-    case 'healthcare':
-      data = healthcareData;
-      template = 'tenants/healthcare';
-      break;
-    default:
-      data = getGenericDemoData(tenant);
-      template = 'tenants/generic';
+  // Redirect to appropriate multi-page demo
+  if (tenant.theme === 'restaurant') {
+    return res.redirect('/restaurant');
   }
 
-  res.render(template, {
+  if (tenant.theme === 'healthcare') {
+    return res.redirect('/healthcare');
+  }
+
+  // Generic demo (temporary tenants)
+  const data = getGenericDemoData(tenant);
+  res.render('tenants/generic', {
     title: `${tenant.name} | DevX360 Demo`,
-    layout: false, // Tenant templates are standalone
+    layout: false,
     ...data
   });
 });

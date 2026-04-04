@@ -67,14 +67,19 @@ app.use(tenantMiddleware({
 // Routes
 // =============================================================================
 
-// Conditional routing based on tenant type
+// Conditional routing based on tenant type and path
 app.use((req, res, next) => {
   // Skip for API routes
   if (req.path.startsWith('/api/')) {
     return next();
   }
 
-  // If it's a demo tenant, use the tenant router
+  // If path starts with /restaurant or /healthcare, use tenant router
+  if (req.path.startsWith('/restaurant') || req.path.startsWith('/healthcare')) {
+    return tenantRouter.handle(req, res, next);
+  }
+
+  // If it's a demo tenant (subdomain-based), use the tenant router
   if (req.tenant && req.tenant.type === 'demo') {
     return tenantRouter.handle(req, res, next);
   }
