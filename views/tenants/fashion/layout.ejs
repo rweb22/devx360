@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Didot', 'Bodoni MT', 'Playfair Display', serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            background: #fefefe;
+        }
+        
+        .fashion-header {
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background: #1a1a1a;
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            text-decoration: none;
+            letter-spacing: 6px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        
+        .nav-links a:hover {
+            color: #666;
+        }
+        
+        .nav-links a.active {
+            color: #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 0.25rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .fashion-footer {
+            background: #1a1a1a;
+            color: #b0b0b0;
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            line-height: 2.5;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .brand {
+                font-size: 1.75rem;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="fashion-header">
+        <div class="header-top">
+            FREE WORLDWIDE SHIPPING | NEW COLLECTION NOW AVAILABLE
+        </div>
+        <div class="header-main">
+            <a href="/fashion" class="brand">ÉLÉGANCE</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/fashion" class="<%= page === 'home' ? 'active' : '' %>">Home</a></li>
+                    <li><a href="/fashion/collections" class="<%= page === 'collections' ? 'active' : '' %>">Collections</a></li>
+                    <li><a href="/fashion/lookbook" class="<%= page === 'lookbook' ? 'active' : '' %>">Lookbook</a></li>
+                    <li><a href="/fashion/about" class="<%= page === 'about' ? 'active' : '' %>">About</a></li>
+                    <li><a href="/fashion/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer class="fashion-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Élégance</h3>
+                    <p style="line-height: 1.8;">Timeless sophistication meets contemporary design. Discover our curated collection of high-end fashion.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="/fashion/collections">Women's Collection</a></li>
+                        <li><a href="/fashion/collections">Men's Collection</a></li>
+                        <li><a href="/fashion/collections">Accessories</a></li>
+                        <li><a href="/fashion/lookbook">Lookbook</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="/fashion/contact">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <ul style="list-style: none;">
+                        <li>📍 5th Avenue, New York, NY</li>
+                        <li>📞 (555) STYLE-01</li>
+                        <li>✉️ hello@elegance-fashion.demo</li>
+                        <li>🕐 Mon-Sat: 10AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>🎯 This is a demo luxury fashion e-commerce platform created by <a href="https://devx360.in" style="color: #888;">DevX360</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

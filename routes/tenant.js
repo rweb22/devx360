@@ -137,6 +137,19 @@ function renderRealEstate(res, page, title) {
   });
 }
 
+// Helper to render with fashion layout
+function renderFashion(res, page, title) {
+  res.app.render(`tenants/fashion/${page}`, {}, (err, html) => {
+    if (err) return res.status(500).send(err.message);
+    res.render('tenants/fashion/layout', {
+      title,
+      page,
+      body: html,
+      layout: false
+    });
+  });
+}
+
 // Middleware to prevent cross-demo access when on a subdomain
 function preventCrossDemoAccess(allowedTheme) {
   return (req, res, next) => {
@@ -211,6 +224,27 @@ router.get('/realestate/contact', preventCrossDemoAccess('realestate'), (req, re
   renderRealEstate(res, 'contact', 'Contact Us | Prime Realty');
 });
 
+// Fashion routes
+router.get('/fashion', preventCrossDemoAccess('fashion'), (req, res) => {
+  renderFashion(res, 'home', 'Élégance | Luxury Fashion Boutique');
+});
+
+router.get('/fashion/collections', preventCrossDemoAccess('fashion'), (req, res) => {
+  renderFashion(res, 'collections', 'Collections | Élégance');
+});
+
+router.get('/fashion/lookbook', preventCrossDemoAccess('fashion'), (req, res) => {
+  renderFashion(res, 'lookbook', 'Lookbook 2024 | Élégance');
+});
+
+router.get('/fashion/about', preventCrossDemoAccess('fashion'), (req, res) => {
+  renderFashion(res, 'about', 'About Us | Élégance');
+});
+
+router.get('/fashion/contact', preventCrossDemoAccess('fashion'), (req, res) => {
+  renderFashion(res, 'contact', 'Contact | Élégance');
+});
+
 // Home page for demo tenants (fallback for old single-page demos)
 router.get('/', (req, res) => {
   const tenant = req.tenant;
@@ -231,6 +265,10 @@ router.get('/', (req, res) => {
 
   if (tenant.theme === 'realestate') {
     return res.redirect('/realestate');
+  }
+
+  if (tenant.theme === 'fashion') {
+    return res.redirect('/fashion');
   }
 
   // Generic demo (temporary tenants)

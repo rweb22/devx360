@@ -70,6 +70,18 @@ const PERMANENT_TENANTS = {
     description: 'Modern real estate property listing platform',
     features: ['Property search', 'Agent directory', 'Virtual tours', 'Market analytics'],
     enabled: true
+  },
+
+  // Fashion demo site
+  'fashion': {
+    id: 'fashion',
+    name: 'Élégance Fashion',
+    subdomain: 'fashion',
+    type: 'demo',
+    theme: 'fashion',
+    description: 'High-end luxury fashion boutique e-commerce',
+    features: ['Designer collections', 'Lookbook', 'Personal styling', 'Private appointments'],
+    enabled: true
   }
 };
 

@@ -1,0 +1,46 @@
+<section style="background: #f5f5f5; padding: 5rem 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 4rem; margin-bottom: 1rem; font-weight: 300; letter-spacing: 4px; color: #1a1a1a;">LOOKBOOK 2024</h1>
+        <p style="font-size: 1rem; color: #666; font-family: sans-serif;">Spring Summer Collection</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div style="display: grid; gap: 5rem;">
+            <% 
+            const looks = [
+                {title: 'Modern Minimalism', desc: 'Clean lines and understated elegance define this effortless ensemble', color: '#e8e0d8'},
+                {title: 'Evening Sophistication', desc: 'Timeless glamour for special occasions', color: '#d8d0c8'},
+                {title: 'Urban Chic', desc: 'Contemporary tailoring meets street-smart styling', color: '#c8c0b8'},
+                {title: 'Classic Revival', desc: 'Heritage-inspired pieces reimagined for today', color: '#b8b0a8'},
+                {title: 'Effortless Grace', desc: 'Fluid silhouettes in luxurious fabrics', color: '#a8a098'},
+                {title: 'Power Dressing', desc: 'Commanding presence through impeccable tailoring', color: '#989088'}
+            ];
+            
+            looks.forEach((look, index) => { 
+                const isEven = index % 2 === 0;
+            %>
+                <div style="display: grid; grid-template-columns: <%= isEven ? '1fr 1fr' : '1fr 1fr' %>; gap: 4rem; align-items: center;">
+                    <% if (!isEven) { %>
+                        <div>
+                            <p style="color: #888; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 1.5rem; font-family: sans-serif; text-transform: uppercase;">Look <%= index + 1 %></p>
+                            <h2 style="font-size: 3rem; margin-bottom: 1.5rem; font-weight: 300; letter-spacing: 2px; color: #1a1a1a;"><%= look.title %></h2>
+                            <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2.5rem; font-family: sans-serif;"><%= look.desc %></p>
+                            <a href="/fashion/collections" style="color: #1a1a1a; text-decoration: none; letter-spacing: 2px; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 0.25rem; font-family: sans-serif; text-transform: uppercase;">Shop This Look →</a>
+                        </div>
+                    <% } %>
+                    <div style="height: 600px; background: <%= look.color %>; display: flex; align-items: center; justify-content: center; font-size: 8rem;">👔</div>
+                    <% if (isEven) { %>
+                        <div>
+                            <p style="color: #888; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 1.5rem; font-family: sans-serif; text-transform: uppercase;">Look <%= index + 1 %></p>
+                            <h2 style="font-size: 3rem; margin-bottom: 1.5rem; font-weight: 300; letter-spacing: 2px; color: #1a1a1a;"><%= look.title %></h2>
+                            <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2.5rem; font-family: sans-serif;"><%= look.desc %></p>
+                            <a href="/fashion/collections" style="color: #1a1a1a; text-decoration: none; letter-spacing: 2px; font-size: 0.85rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 0.25rem; font-family: sans-serif; text-transform: uppercase;">Shop This Look →</a>
+                        </div>
+                    <% } %>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
