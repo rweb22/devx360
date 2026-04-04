@@ -66,10 +66,16 @@ app.use(tenantMiddleware({
 
 // Conditional routing based on tenant type
 app.use((req, res, next) => {
+  // Skip for API routes
+  if (req.path.startsWith('/api/')) {
+    return next();
+  }
+
   // If it's a demo tenant, use the tenant router
   if (req.tenant && req.tenant.type === 'demo') {
-    return tenantRouter(req, res, next);
+    return tenantRouter.handle(req, res, next);
   }
+
   // Otherwise, proceed to main routes
   next();
 });

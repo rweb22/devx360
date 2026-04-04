@@ -173,6 +173,7 @@ router.get('/', (req, res) => {
 
   res.render(template, {
     title: `${tenant.name} | DevX360 Demo`,
+    layout: false, // Tenant templates are standalone
     ...data
   });
 });
