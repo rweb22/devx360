@@ -124,6 +124,19 @@ function renderJewelry(res, page, title) {
   });
 }
 
+// Helper to render with real estate layout
+function renderRealEstate(res, page, title) {
+  res.app.render(`tenants/realestate/${page}`, {}, (err, html) => {
+    if (err) return res.status(500).send(err.message);
+    res.render('tenants/realestate/layout', {
+      title,
+      page,
+      body: html,
+      layout: false
+    });
+  });
+}
+
 // Middleware to prevent cross-demo access when on a subdomain
 function preventCrossDemoAccess(allowedTheme) {
   return (req, res, next) => {
@@ -177,6 +190,27 @@ router.get('/jewelry/contact', preventCrossDemoAccess('jewelry'), (req, res) => 
   renderJewelry(res, 'contact', 'Contact | Lumière');
 });
 
+// Real Estate routes
+router.get('/realestate', preventCrossDemoAccess('realestate'), (req, res) => {
+  renderRealEstate(res, 'home', 'Prime Realty | Find Your Dream Home');
+});
+
+router.get('/realestate/properties', preventCrossDemoAccess('realestate'), (req, res) => {
+  renderRealEstate(res, 'properties', 'Properties | Prime Realty');
+});
+
+router.get('/realestate/agents', preventCrossDemoAccess('realestate'), (req, res) => {
+  renderRealEstate(res, 'agents', 'Our Agents | Prime Realty');
+});
+
+router.get('/realestate/about', preventCrossDemoAccess('realestate'), (req, res) => {
+  renderRealEstate(res, 'about', 'About Us | Prime Realty');
+});
+
+router.get('/realestate/contact', preventCrossDemoAccess('realestate'), (req, res) => {
+  renderRealEstate(res, 'contact', 'Contact Us | Prime Realty');
+});
+
 // Home page for demo tenants (fallback for old single-page demos)
 router.get('/', (req, res) => {
   const tenant = req.tenant;
@@ -193,6 +227,10 @@ router.get('/', (req, res) => {
 
   if (tenant.theme === 'jewelry') {
     return res.redirect('/jewelry');
+  }
+
+  if (tenant.theme === 'realestate') {
+    return res.redirect('/realestate');
   }
 
   // Generic demo (temporary tenants)

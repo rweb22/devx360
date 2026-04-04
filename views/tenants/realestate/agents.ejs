@@ -1,0 +1,40 @@
+<section style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%); color: white; padding: 4rem 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700;">Meet Our Agents</h1>
+        <p style="font-size: 1.25rem; opacity: 0.95;">Expert professionals dedicated to your success</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <% 
+            const agents = [
+                {name: 'Sarah Johnson', title: 'Senior Real Estate Agent', sales: '150+ Sales', rating: '4.9/5.0', bg: '#2563eb'},
+                {name: 'Michael Chen', title: 'Commercial Specialist', sales: '200+ Deals', rating: '5.0/5.0', bg: '#7c3aed'},
+                {name: 'Emily Davis', title: 'Residential Expert', sales: '180+ Homes', rating: '4.8/5.0', bg: '#059669'},
+                {name: 'David Martinez', title: 'Luxury Properties', sales: '100+ Estates', rating: '5.0/5.0', bg: '#d97706'},
+                {name: 'Jessica Brown', title: 'First-Time Buyers', sales: '220+ Clients', rating: '4.9/5.0', bg: '#db2777'},
+                {name: 'Robert Taylor', title: 'Investment Properties', sales: '130+ Investments', rating: '4.8/5.0', bg: '#0891b2'}
+            ];
+            
+            agents.forEach(agent => { %>
+                <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                    <div style="height: 280px; background: <%= agent.bg %>; display: flex; align-items: flex-end; justify-content: center; position: relative;">
+                        <div style="width: 140px; height: 140px; background: white; border-radius: 50%; border: 5px solid white; margin-bottom: -70px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">👤</div>
+                    </div>
+                    <div style="padding: 4.5rem 2rem 2rem; text-align: center;">
+                        <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem; color: var(--realestate-dark);"><%= agent.name %></h3>
+                        <p style="color: var(--realestate-primary); font-weight: 600; margin-bottom: 1.5rem;"><%= agent.title %></p>
+                        <div style="display: grid; gap: 0.75rem; margin-bottom: 1.5rem; color: #64748b;">
+                            <div>🏆 <%= agent.sales %></div>
+                            <div>⭐ <%= agent.rating %> Rating</div>
+                            <div>📞 (555) 123-<%= Math.floor(1000 + Math.random() * 9000) %></div>
+                        </div>
+                        <a href="/realestate/contact" style="display: block; background: var(--realestate-primary); color: white; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Contact Agent</a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>

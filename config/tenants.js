@@ -58,6 +58,18 @@ const PERMANENT_TENANTS = {
     description: 'Luxury fine jewelry e-commerce platform',
     features: ['Online catalog', 'Engagement rings', 'Custom design', 'GIA certified diamonds'],
     enabled: true
+  },
+
+  // Real Estate demo site
+  'realestate': {
+    id: 'realestate',
+    name: 'Prime Realty',
+    subdomain: 'realestate',
+    type: 'demo',
+    theme: 'realestate',
+    description: 'Modern real estate property listing platform',
+    features: ['Property search', 'Agent directory', 'Virtual tours', 'Market analytics'],
+    enabled: true
   }
 };
 

@@ -1,0 +1,46 @@
+<section style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(30, 64, 175, 0.95) 100%); color: white; padding: 4rem 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700;">Browse Properties</h1>
+        <p style="font-size: 1.25rem; opacity: 0.95;">Find your perfect home from our extensive listings</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem;">
+            <% 
+            const properties = [
+                {name: 'Cozy Cottage', location: 'Riverside Park', beds: 3, baths: 2, sqft: 1800, price: '$450,000', type: 'SALE', bg: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)', emoji: '🏡'},
+                {name: 'Modern Apartment', location: 'Downtown District', beds: 2, baths: 2, sqft: 1100, price: '$2,200/mo', type: 'RENT', bg: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', emoji: '🏢'},
+                {name: 'Beachfront Condo', location: 'Coastal Boulevard', beds: 3, baths: 3, sqft: 2000, price: '$890,000', type: 'SALE', bg: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)', emoji: '🏖️'},
+                {name: 'Country Estate', location: 'Green Valley', beds: 5, baths: 4, sqft: 4200, price: '$1.8M', type: 'SALE', bg: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', emoji: '🏰'},
+                {name: 'Studio Loft', location: 'Arts District', beds: 1, baths: 1, sqft: 650, price: '$1,500/mo', type: 'RENT', bg: 'linear-gradient(135deg, #ec4899 0%, #db2777 100%)', emoji: '🎨'},
+                {name: 'Suburban Home', location: 'Quiet Hills', beds: 4, baths: 3, sqft: 2800, price: '$680,000', type: 'SALE', bg: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)', emoji: '🏘️'},
+                {name: 'Penthouse Suite', location: 'Skyline Tower', beds: 3, baths: 3, sqft: 2500, price: '$4,500/mo', type: 'RENT', bg: 'linear-gradient(135deg, #f43f5e 0%, #e11d48 100%)', emoji: '🌆'},
+                {name: 'Ranch Property', location: 'Wide Open Spaces', beds: 4, baths: 3, sqft: 3500, price: '$1.2M', type: 'SALE', bg: 'linear-gradient(135deg, #84cc16 0%, #65a30d 100%)', emoji: '🤠'}
+            ];
+            
+            properties.forEach(prop => { %>
+                <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 250px; background: <%= prop.bg %>; display: flex; align-items: center; justify-content: center; font-size: 5rem;"><%= prop.emoji %></div>
+                    <div style="padding: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                            <h3 style="font-size: 1.5rem; color: var(--realestate-dark);"><%= prop.name %></h3>
+                            <span style="background: <%= prop.type === 'SALE' ? '#dcfce7' : '#dbeafe' %>; color: <%= prop.type === 'SALE' ? '#166534' : '#1e40af' %>; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.875rem; font-weight: 600;">FOR <%= prop.type %></span>
+                        </div>
+                        <p style="color: #64748b; margin-bottom: 1rem;">📍 <%= prop.location %></p>
+                        <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; color: #64748b; font-size: 0.95rem;">
+                            <span>🛏️ <%= prop.beds %> Beds</span>
+                            <span>🛁 <%= prop.baths %> Baths</span>
+                            <span>📐 <%= prop.sqft %> sqft</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 2rem; font-weight: 700; color: var(--realestate-primary);"><%= prop.price %></span>
+                            <button style="background: var(--realestate-primary); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;" onclick="alert('This is a demo. In production, this would show property details!')">Details</button>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>
