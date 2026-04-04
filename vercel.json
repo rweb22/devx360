@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/app.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "BASE_URL": "https://devx360.vercel.app",
+    "BASE_DOMAIN": "devx360.vercel.app",
+    "BRAND_NAME": "DevX360",
+    "BRAND_EMAIL": "contact@devx360.in"
+  }
+}
