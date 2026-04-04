@@ -28,7 +28,7 @@
                             <span class="method-icon">📧</span>
                             <div class="method-details">
                                 <span class="method-label">Email us</span>
-                                <a href="mailto:contact@devx360.in" class="method-value">contact@devx360.in</a>
+                                <a href="mailto:<%=app.brandEmail%>" class="method-value"><%=app.brandEmail%></a>
                             </div>
                         </div>
                         <div class="contact-method">
@@ -75,7 +75,7 @@
                         </div>
                         <div class="code-block-body">
                             <pre>{
-  <span class="syntax-variable">"email"</span>: <span class="syntax-string">"contact@devx360.in"</span>,
+  <span class="syntax-variable">"email"</span>: <span class="syntax-string">"<%=app.brandEmail%>"</span>,
   <span class="syntax-variable">"response"</span>: <span class="syntax-string">"24h"</span>
 }</pre>
                         </div>
@@ -125,7 +125,7 @@
                                 <span class="terminal-title">send_message.sh</span>
                             </div>
                             <div class="terminal-body">
-                                <pre><span class="syntax-keyword">$</span> <span class="syntax-function">curl</span> -X POST devx360.in/api/contact \
+                                <pre><span class="syntax-keyword">$</span> <span class="syntax-function">curl</span> -X POST <%=app.baseDomain%>/api/contact \
   -d <span class="syntax-string">'{"name": "you", "email": "your@email"}'</span></pre>
                             </div>
                         </div>

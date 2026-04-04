@@ -199,7 +199,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>🎯 This is a demo jewelry e-commerce platform created by <a href="https://devx360.in" style="color: var(--jewelry-primary);">DevX360</a></p>
+                <p>🎯 This is a demo jewelry e-commerce platform created by <a href="<%= typeof app !== 'undefined' ? app.baseUrl : 'https://devx360.in' %>" style="color: var(--jewelry-primary);"><%=typeof app!=='undefined'?app.brandName:'DevX360'%></a></p>
             </div>
         </div>
     </footer>

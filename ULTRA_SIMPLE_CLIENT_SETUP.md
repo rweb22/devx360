@@ -52,6 +52,18 @@ example-client
 - Lines starting with `#` are comments (ignored)
 - Empty lines are ignored
 
+### 3. Brand Configuration (.env)
+
+All branding is configurable via environment variables:
+```bash
+BASE_URL=http://localhost:3000
+BASE_DOMAIN=localhost
+BRAND_NAME=DevX360
+BRAND_EMAIL=contact@devx360.in
+```
+
+Change these to rebrand instantly!
+
 ### 3. Enable/Disable by Adding/Removing Lines
 
 **Enable:**

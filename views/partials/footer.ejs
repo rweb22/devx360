@@ -2,14 +2,14 @@
   <div class="container">
     <div class="footer-brand">
       <span class="footer-logo">
-        <span class="logo-bracket">&lt;</span><span class="logo-name">DevX360</span><span class="logo-bracket"> /&gt;</span>
+        <span class="logo-bracket">&lt;</span><span class="logo-name"><%=app.brandName%></span><span class="logo-bracket"> /&gt;</span>
       </span>
-      <span class="footer-copyright">© 2026</span>
+      <span class="footer-copyright">© <%= new Date().getFullYear() %></span>
     </div>
 
     <div class="footer-contact">
       <span class="syntax-comment">// contact</span>
-      <a href="mailto:contact@devx360.in" class="footer-email">contact@devx360.in</a>
+      <a href="mailto:<%=app.brandEmail%>" class="footer-email"><%=app.brandEmail%></a>
       <a href="/admin/login" class="footer-admin-link" title="Admin Login" style="font-family: var(--font-mono); opacity: 0.25; font-size: 0.7rem; margin-left: 1rem; transition: opacity 0.3s; color: var(--text-muted);" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.25'">
         🔐
       </a>

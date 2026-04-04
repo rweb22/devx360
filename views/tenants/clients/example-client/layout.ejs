@@ -109,7 +109,7 @@
 
     <footer class="client-footer">
         <div class="footer-content">
-            <p>© 2024 Example Client. This is a demo created by <a href="https://devx360.in" style="color: var(--client-primary);">DevX360</a></p>
+            <p>© 2024 Example Client. This is a demo created by <a href="<%= typeof app !== 'undefined' ? app.baseUrl : 'https://devx360.in' %>" style="color: var(--client-primary);"><%=typeof app!=='undefined'?app.brandName:'DevX360'%></a></p>
         </div>
     </footer>
 </body>

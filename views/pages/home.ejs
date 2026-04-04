@@ -38,7 +38,7 @@
                                 <span class="terminal-dot yellow"></span>
                                 <span class="terminal-dot green"></span>
                             </div>
-                            <span class="terminal-title">~/devx360</span>
+                            <span class="terminal-title">~/<%=app.brandName.toLowerCase().replace(/\s+/g, '')%></span>
                         </div>
                         <div class="terminal-body">
                             <div class="terminal-line">
@@ -47,9 +47,9 @@
                             <div class="terminal-output">
                                 <br>
                                 <span class="syntax-comment"># Enterprise Software Solutions</span><br><br>
-                                <span class="syntax-variable">name</span>: <span class="syntax-string">"<span class="logo-bracket">&lt;</span><span class="logo-name">DevX360</span><span class="logo-bracket"> /&gt;</span>"</span><br>
+                                <span class="syntax-variable">name</span>: <span class="syntax-string">"<span class="logo-bracket">&lt;</span><span class="logo-name"><%=app.brandName%></span><span class="logo-bracket"> /&gt;</span>"</span><br>
                                 <span class="syntax-variable">mission</span>: <span class="syntax-string">"Building scalable, secure, innovative applications"</span><br>
-                                <span class="syntax-variable">domain</span>: <span class="syntax-string">"devx360.in"</span><br>
+                                <span class="syntax-variable">domain</span>: <span class="syntax-string">"<%=app.baseDomain%>"</span><br>
                                 <span class="syntax-variable">status</span>: <span class="syntax-type">ACTIVE</span><br>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                 </div>
                 <div class="cta-buttons">
                     <a href="/contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="mailto:contact@devx360.in" class="btn btn-secondary">contact@devx360.in</a>
+                    <a href="mailto:<%=app.brandEmail%>" class="btn btn-secondary"><%=app.brandEmail%></a>
                 </div>
             </div>
 
