@@ -62,7 +62,6 @@ https://www.devx360.in
 
 ### Permanent Demos
 ```
-https://restaurant.devx360.in
 https://healthcare.devx360.in
 ```
 
@@ -132,7 +131,6 @@ Just delete the entire tenant object from gist.
 sudo nano /etc/hosts
 
 # Add these lines:
-127.0.0.1 restaurant.localhost
 127.0.0.1 healthcare.localhost
 127.0.0.1 a.localhost
 127.0.0.1 b.localhost
@@ -143,7 +141,6 @@ sudo nano /etc/hosts
 C:\Windows\System32\drivers\etc\hosts
 
 # Add these lines:
-127.0.0.1 restaurant.localhost
 127.0.0.1 healthcare.localhost
 127.0.0.1 a.localhost
 127.0.0.1 b.localhost

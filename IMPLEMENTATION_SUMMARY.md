@@ -125,13 +125,13 @@ A complete **subdomain-based multi-tenant architecture** that allows a single Ex
 ### Request Flow
 
 ```
-1. Client requests: restaurant.devx360.in
+1. Client requests: healthcare.devx360.in
    ↓
 2. DNS wildcard routes to app
    ↓
-3. tenantMiddleware() extracts "restaurant" subdomain
+3. tenantMiddleware() extracts "healthcare" subdomain
    ↓
-4. getTenant("restaurant") returns tenant config
+4. getTenant("healthcare") returns tenant config
    ↓
 5. Attaches to req.tenant and res.locals.tenant
    ↓

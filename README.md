@@ -21,7 +21,7 @@ DevX360 now supports **subdomain-based multi-tenancy** - run multiple demo websi
 ### Available Demo Sites
 
 - **Main Site**: `devx360.in` - Your main portfolio
-- **Restaurant Demo**: `restaurant.devx360.in` - Restaurant ordering & reservation system
+
 - **Healthcare Demo**: `healthcare.devx360.in` - Healthcare management platform
 - **Custom Demos**: `a.devx360.in`, `b.devx360.in`, etc. - Managed via GitHub Gist
 
@@ -60,7 +60,7 @@ devx360/
 │   │   ├── 404.ejs           # Not found page
 │   │   └── error.ejs         # Error page
 │   ├── tenants/              # Demo tenant templates
-│   │   ├── restaurant.ejs    # Restaurant demo
+
 │   │   ├── healthcare.ejs    # Healthcare demo
 │   │   └── generic.ejs       # Generic demo template
 │   └── partials/

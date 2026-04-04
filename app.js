@@ -150,9 +150,8 @@ async function startServer() {
       console.log('='.repeat(60));
       console.log(`\n📝 Available URLs:`);
       console.log(`   Main site:       http://localhost:${PORT}`);
-      console.log(`   Restaurant demo: http://restaurant.localhost:${PORT}`);
       console.log(`   Healthcare demo: http://healthcare.localhost:${PORT}`);
-      console.log(`   Admin API:       http://localhost:${PORT}/api/admin/tenants`);
+      console.log(`   Admin login:     http://localhost:${PORT}/admin/login`);
       console.log('='.repeat(60));
     });
   } catch (error) {

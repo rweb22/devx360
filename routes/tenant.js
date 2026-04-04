@@ -1,57 +1,11 @@
 /**
  * Tenant Routes
- * 
- * Handles routes for demo tenant sites (restaurant, healthcare, etc.)
+ *
+ * Handles routes for demo tenant sites (healthcare, etc.)
  */
 
 const express = require('express');
 const router = express.Router();
-
-// =============================================================================
-// Restaurant Demo Data
-// =============================================================================
-
-const restaurantData = {
-  hero: {
-    title: 'Tasty Bites Restaurant',
-    subtitle: 'Experience culinary excellence with our modern dining platform',
-    cta: 'Order Now'
-  },
-  features: [
-    {
-      icon: '🍽️',
-      title: 'Online Ordering',
-      description: 'Browse our menu and place orders for delivery or pickup'
-    },
-    {
-      icon: '📅',
-      title: 'Table Reservations',
-      description: 'Reserve your table in advance with our smart booking system'
-    },
-    {
-      icon: '👨‍🍳',
-      title: 'Menu Management',
-      description: 'Real-time menu updates with seasonal specials'
-    },
-    {
-      icon: '🚚',
-      title: 'Delivery Tracking',
-      description: 'Track your order in real-time from kitchen to doorstep'
-    }
-  ],
-  menu: [
-    { category: 'Appetizers', count: 12 },
-    { category: 'Main Course', count: 24 },
-    { category: 'Desserts', count: 15 },
-    { category: 'Beverages', count: 20 }
-  ],
-  stats: [
-    { label: 'Daily Orders', value: '500+' },
-    { label: 'Menu Items', value: '150+' },
-    { label: 'Happy Customers', value: '10K+' },
-    { label: 'Avg Delivery Time', value: '30 min' }
-  ]
-};
 
 // =============================================================================
 // Healthcare Demo Data

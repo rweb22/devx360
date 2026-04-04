@@ -5,7 +5,7 @@
 DevX360 now supports a **multi-tenant architecture** that allows a single Express.js application to serve multiple demo websites via subdomains:
 
 - **Main site**: `devx360.in` or `www.devx360.in`
-- **Permanent demos**: `restaurant.devx360.in`, `healthcare.devx360.in`
+- **Permanent demos**: `healthcare.devx360.in`
 - **Temporary demos**: `a.devx360.in`, `b.devx360.in`, etc. (managed via GitHub Gist)
 
 ## Architecture
@@ -31,7 +31,7 @@ DevX360 now supports a **multi-tenant architecture** that allows a single Expres
    - Protected by API key authentication
 
 5. **Tenant Templates** (`views/tenants/`)
-   - `restaurant.ejs` - Restaurant demo template
+ 
    - `healthcare.ejs` - Healthcare demo template
    - `generic.ejs` - Generic template for temporary tenants
 
@@ -60,7 +60,7 @@ For local development, you can test subdomains using:
 1. Edit `/etc/hosts` (macOS/Linux) or `C:\Windows\System32\drivers\etc\hosts` (Windows):
    ```
    127.0.0.1 localhost
-   127.0.0.1 restaurant.localhost
+
    127.0.0.1 healthcare.localhost
    127.0.0.1 a.localhost
    127.0.0.1 b.localhost
@@ -75,7 +75,7 @@ For local development, you can test subdomains using:
 
 3. Access different tenants:
    - Main site: `http://localhost:3000`
-   - Restaurant: `http://restaurant.localhost:3000`
+ 
    - Healthcare: `http://healthcare.localhost:3000`
 
 ## DNS Configuration
