@@ -88,11 +88,11 @@
         <div style="text-align: center;">
             <h3 style="color: #0c5460; margin-bottom: 1rem;">🏥 This is a Demo Website</h3>
             <p style="color: #0c5460; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
-                This healthcare demo demonstrates DevX360's capabilities in building secure, HIPAA-compliant healthcare platforms.
+                This healthcare demo demonstrates <%= app.brandName %>'s capabilities in building secure, HIPAA-compliant healthcare platforms.
                 Need a custom healthcare solution?
             </p>
-            <a href="https://devx360.in/contact" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 2rem; background: #0c5460; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
-                Contact DevX360
+            <a href="<%= app.baseUrl %>/contact" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 2rem; background: #0c5460; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                Contact <%= app.brandName %>
             </a>
         </div>
     </div>

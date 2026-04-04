@@ -12,11 +12,14 @@ const path = require('path');
 // Permanent Tenants (Hardcoded)
 // =============================================================================
 
+// Get dynamic brand name from environment
+const { getBrandName } = require('./app');
+
 const PERMANENT_TENANTS = {
-  // Main DevX360 website
+  // Main website
   'www': {
-    id: 'devx360',
-    name: 'DevX360',
+    id: 'main',
+    name: getBrandName(),
     subdomain: 'www',
     type: 'main',
     theme: 'default',
@@ -24,11 +27,11 @@ const PERMANENT_TENANTS = {
     routes: ['index', 'projects'], // Use existing routes
     enabled: true
   },
-  
+
   // Root domain (same as www)
   '': {
-    id: 'devx360',
-    name: 'DevX360',
+    id: 'main',
+    name: getBrandName(),
     subdomain: '',
     type: 'main',
     theme: 'default',
