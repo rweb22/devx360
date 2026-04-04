@@ -12,6 +12,27 @@ A modern, hi-tech Express.js portfolio website for DevX360 - an enterprise softw
 - 📄 **Project Case Studies** - Detailed project pages with results and testimonials
 - 🔧 **Configurable** - Easy to customize domain, company info, and content
 - ♿ **Accessible** - ARIA labels, keyboard navigation, and screen reader support
+- 🏢 **Multi-Tenant Architecture** - Single app serves multiple demo sites via subdomains (NEW!)
+
+## 🆕 Multi-Tenant Support
+
+DevX360 now supports **subdomain-based multi-tenancy** - run multiple demo websites from a single application!
+
+### Available Demo Sites
+
+- **Main Site**: `devx360.in` - Your main portfolio
+- **Restaurant Demo**: `restaurant.devx360.in` - Restaurant ordering & reservation system
+- **Healthcare Demo**: `healthcare.devx360.in` - Healthcare management platform
+- **Custom Demos**: `a.devx360.in`, `b.devx360.in`, etc. - Managed via GitHub Gist
+
+### Key Benefits
+
+✅ **Zero Extra Cost** - Uses free GitHub Gist, no database needed
+✅ **Dynamic Management** - Add/remove temporary demos without redeployment
+✅ **Single Codebase** - One app serves all tenants
+✅ **Auto-Refresh** - Changes from Gist applied within 5 minutes
+
+📖 **[Read the Complete Multi-Tenant Setup Guide →](MULTI_TENANT_SETUP.md)**
 
 ## Project Structure
 
@@ -19,6 +40,10 @@ A modern, hi-tech Express.js portfolio website for DevX360 - an enterprise softw
 devx360/
 ├── app.js                    # Express.js entry point
 ├── package.json              # Dependencies and scripts
+├── config/                   # Configuration
+│   └── tenants.js            # Multi-tenant configuration
+├── middleware/               # Express middleware
+│   └── tenant.js             # Tenant detection middleware
 ├── public/                   # Static assets
 │   ├── css/
 │   │   └── styles.css        # All styles with CSS variables
@@ -28,18 +53,27 @@ devx360/
 ├── views/                    # EJS templates
 │   ├── layouts/
 │   │   └── main.ejs          # Main layout template
-│   ├── pages/
+│   ├── pages/                # Main site pages
 │   │   ├── home.ejs          # Home/landing page
 │   │   ├── projects.ejs      # Projects listing
 │   │   ├── project.ejs       # Individual project detail
 │   │   ├── 404.ejs           # Not found page
 │   │   └── error.ejs         # Error page
+│   ├── tenants/              # Demo tenant templates
+│   │   ├── restaurant.ejs    # Restaurant demo
+│   │   ├── healthcare.ejs    # Healthcare demo
+│   │   └── generic.ejs       # Generic demo template
 │   └── partials/
 │       ├── header.ejs        # Navigation header
 │       └── footer.ejs        # Site footer
 ├── routes/                   # Express routes
 │   ├── index.js              # Home and main routes
-│   └── projects.js           # Project routes with data
+│   ├── projects.js           # Project routes with data
+│   ├── tenant.js             # Tenant demo routes
+│   └── admin.js              # Admin API routes
+├── examples/                 # Example files
+│   └── tenants.json.example  # Example tenant configuration
+├── MULTI_TENANT_SETUP.md     # Multi-tenant setup guide
 └── README.md
 ```
 

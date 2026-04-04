@@ -1,0 +1,73 @@
+{
+  "a": {
+    "id": "demo-a",
+    "name": "Client A Demo",
+    "subdomain": "a",
+    "type": "demo",
+    "theme": "generic",
+    "description": "Custom demo website for Client A showcasing our platform capabilities",
+    "features": [
+      "Real-time Dashboard",
+      "Advanced Analytics",
+      "API Integration",
+      "Custom Reports"
+    ],
+    "enabled": true
+  },
+  "b": {
+    "id": "demo-b",
+    "name": "Client B Demo",
+    "subdomain": "b",
+    "type": "demo",
+    "theme": "generic",
+    "description": "Tailored solution demonstrating features for Client B",
+    "features": [
+      "User Management",
+      "Role-based Access",
+      "Automated Workflows",
+      "Mobile Responsive"
+    ],
+    "enabled": true
+  },
+  "startup-demo": {
+    "id": "startup-demo",
+    "name": "Startup Platform Demo",
+    "subdomain": "startup-demo",
+    "type": "demo",
+    "theme": "generic",
+    "description": "Modern platform designed for fast-growing startups",
+    "features": [
+      "Scalable Architecture",
+      "Cloud Integration",
+      "Payment Processing",
+      "Team Collaboration"
+    ],
+    "enabled": true
+  },
+  "ecommerce": {
+    "id": "ecommerce-demo",
+    "name": "E-Commerce Platform",
+    "subdomain": "ecommerce",
+    "type": "demo",
+    "theme": "generic",
+    "description": "Complete e-commerce solution with modern features",
+    "features": [
+      "Product Catalog",
+      "Shopping Cart",
+      "Payment Gateway",
+      "Order Management",
+      "Inventory Tracking",
+      "Customer Reviews"
+    ],
+    "enabled": true
+  },
+  "disabled-example": {
+    "id": "disabled-demo",
+    "name": "Disabled Demo",
+    "subdomain": "disabled-example",
+    "type": "demo",
+    "theme": "generic",
+    "description": "This demo is disabled and won't be accessible",
+    "enabled": false
+  }
+}
