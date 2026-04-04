@@ -16,23 +16,30 @@ A modern, hi-tech Express.js portfolio website for DevX360 - an enterprise softw
 
 ## 🆕 Multi-Tenant Support
 
-DevX360 now supports **subdomain-based multi-tenancy** - run multiple demo websites from a single application!
+DevX360 supports **subdomain-based multi-tenancy** - run multiple demo websites from a single application!
 
 ### Available Demo Sites
 
-- **Main Site**: `devx360.in` - Your main portfolio
+#### **Showcase Demos** (Permanent)
+- **Healthcare**: `healthcare.devx360.in` - Medical management platform
+- **Jewelry**: `jewelry.devx360.in` - Luxury jewelry e-commerce
+- **Real Estate**: `realestate.devx360.in` - Property listings platform
+- **Fashion**: `fashion.devx360.in` - High-end fashion boutique
 
-- **Healthcare Demo**: `healthcare.devx360.in` - Healthcare management platform
-- **Custom Demos**: `a.devx360.in`, `b.devx360.in`, etc. - Managed via GitHub Gist
+#### **Client Demos** (Custom)
+- Create fully customized demos for specific clients
+- Location: `views/tenants/clients/{client-name}/`
+- Quick setup: `./scripts/create-client.sh clientname`
 
 ### Key Benefits
 
-✅ **Zero Extra Cost** - Uses free GitHub Gist, no database needed
-✅ **Dynamic Management** - Add/remove temporary demos without redeployment
 ✅ **Single Codebase** - One app serves all tenants
-✅ **Auto-Refresh** - Changes from Gist applied within 5 minutes
+✅ **Full Customization** - Complete HTML/CSS/JS control per client
+✅ **Fast Setup** - 30 seconds to create new client demo
+✅ **Version Control** - All demos in git repository
+✅ **Easy Deployment** - Single deployment for all demos
 
-📖 **[Read the Complete Multi-Tenant Setup Guide →](MULTI_TENANT_SETUP.md)**
+📖 **[Read the Client Demos Guide →](CLIENT_DEMOS_SUMMARY.md)**
 
 ## Project Structure
 

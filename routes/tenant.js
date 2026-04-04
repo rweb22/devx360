@@ -54,47 +54,6 @@ const healthcareData = {
 };
 
 // =============================================================================
-// Generic Demo Data (for temporary tenants)
-// =============================================================================
-
-function getGenericDemoData(tenant) {
-  return {
-    hero: {
-      title: tenant.name || 'Demo Website',
-      subtitle: tenant.description || 'Custom demo website built with DevX360',
-      cta: 'Get Started'
-    },
-    features: tenant.features ? tenant.features.map((feature, index) => ({
-      icon: ['🚀', '⚡', '🎯', '💡'][index % 4],
-      title: feature,
-      description: `Experience ${feature.toLowerCase()} with our platform`
-    })) : [
-      {
-        icon: '🚀',
-        title: 'Fast & Reliable',
-        description: 'Built with modern technology for optimal performance'
-      },
-      {
-        icon: '⚡',
-        title: 'Easy to Use',
-        description: 'Intuitive interface designed for great user experience'
-      },
-      {
-        icon: '🎯',
-        title: 'Customizable',
-        description: 'Tailored to meet your specific business needs'
-      }
-    ],
-    stats: [
-      { label: 'Users', value: '1000+' },
-      { label: 'Uptime', value: '99.9%' },
-      { label: 'Support', value: '24/7' },
-      { label: 'Satisfaction', value: '95%' }
-    ]
-  };
-}
-
-// =============================================================================
 // Routes
 // =============================================================================
 
@@ -272,7 +231,7 @@ router.get('/client/example-client/contact', (req, res) => {
   renderClient(res, 'example-client', 'contact', 'Contact | Example Client');
 });
 
-// Home page for demo tenants (fallback for old single-page demos)
+// Home page for demo tenants - redirect to appropriate demo
 router.get('/', (req, res) => {
   const tenant = req.tenant;
 
@@ -298,13 +257,8 @@ router.get('/', (req, res) => {
     return res.redirect('/fashion');
   }
 
-  // Generic demo (temporary tenants)
-  const data = getGenericDemoData(tenant);
-  res.render('tenants/generic', {
-    title: `${tenant.name} | DevX360 Demo`,
-    layout: false,
-    ...data
-  });
+  // Unknown tenant - redirect to main site
+  return res.redirect('/');
 });
 
 module.exports = router;

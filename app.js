@@ -130,9 +130,8 @@ app.use((err, req, res, next) => {
 // Initialize tenant system and start server
 async function startServer() {
   try {
-    // Initialize tenants (load from Gist if configured)
-    const gistId = process.env.GIST_ID || null;
-    await initializeTenants(gistId);
+    // Initialize tenants
+    initializeTenants();
 
     // Get port from environment variable or use default
     const PORT = process.env.PORT || 3000;
@@ -145,13 +144,16 @@ async function startServer() {
       console.log(`📍 Port: ${PORT}`);
       console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`🏢 Base Domain: ${process.env.BASE_DOMAIN || 'devx360.in'}`);
-      console.log(`🔑 Gist ID: ${gistId ? 'Configured' : 'Not configured (temporary tenants disabled)'}`);
       console.log(`🔐 Admin API Key: ${process.env.ADMIN_API_KEY ? 'Configured' : 'Not configured (admin endpoints unprotected!)'}`);
       console.log('='.repeat(60));
       console.log(`\n📝 Available URLs:`);
-      console.log(`   Main site:       http://localhost:${PORT}`);
-      console.log(`   Healthcare demo: http://healthcare.localhost:${PORT}`);
-      console.log(`   Admin login:     http://localhost:${PORT}/admin/login`);
+      console.log(`   Main site:          http://localhost:${PORT}`);
+      console.log(`   Healthcare demo:    http://healthcare.localhost:${PORT}`);
+      console.log(`   Jewelry demo:       http://jewelry.localhost:${PORT}`);
+      console.log(`   Real Estate demo:   http://realestate.localhost:${PORT}`);
+      console.log(`   Fashion demo:       http://fashion.localhost:${PORT}`);
+      console.log(`   Example client:     http://localhost:${PORT}/client/example-client`);
+      console.log(`   Admin login:        http://localhost:${PORT}/admin/login`);
       console.log('='.repeat(60));
     });
   } catch (error) {

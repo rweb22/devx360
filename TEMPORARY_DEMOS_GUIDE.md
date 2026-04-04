@@ -1,19 +1,52 @@
-# Temporary Client-Specific Demos Guide
+# ⚠️ DEPRECATED - GitHub Gist Approach Removed
 
-## Overview
+## This Guide is Outdated
 
-DevX360 supports **two types of demo websites**:
+The GitHub Gist approach for temporary demos has been **replaced** with a better solution.
 
-1. **Permanent Demos** (healthcare, jewelry, realestate, fashion)
-   - Hardcoded in the repository
-   - Full custom design and multiple pages
-   - Source: `views/tenants/{theme}/`
+### ✅ **Use Client-Specific Demos Instead**
 
-2. **Temporary Demos** (client-specific)
-   - Configured via GitHub Gist
-   - Quick setup for client presentations
-   - Auto-expire or manually managed
-   - Source: GitHub Gist JSON + Generic Template
+Client demos are now created as full HTML/CSS/JS files in the repository:
+
+- **Location**: `views/tenants/clients/{client-name}/`
+- **Documentation**: See `CLIENT_DEMOS_SUMMARY.md`
+- **Quick Start**: Run `./scripts/create-client.sh clientname`
+
+---
+
+## Why We Removed Gist Support
+
+1. **Limited customization** - Gist only provided metadata, not full HTML
+2. **Same template** - All clients used generic template
+3. **Redundant** - Client demos system is more powerful
+4. **Complexity** - Extra HTTP requests, caching, error handling
+5. **Better solution exists** - Full file-based client demos
+
+---
+
+## Migration
+
+If you were planning to use GitHub Gist:
+
+**Old approach (Gist):**
+```json
+{
+  "clientname": {
+    "name": "Client Name",
+    "features": ["A", "B"]
+  }
+}
+```
+
+**New approach (Client Demos):**
+```bash
+./scripts/create-client.sh clientname "Client Name"
+# Edit views/tenants/clients/clientname/*.ejs
+```
+
+---
+
+## Original Documentation Below (For Reference Only)
 
 ---
 
