@@ -16,6 +16,9 @@ const cookieParser = require('cookie-parser');
 const { initialize: initializeTenants } = require('./config/tenants');
 const { tenantMiddleware } = require('./middleware/tenant');
 
+// Import app configuration
+const { getAppConfig, getSubdomainUrl, getBaseUrl } = require('./config/app');
+
 // Import routes
 const indexRouter = require('./routes/index');
 const projectsRouter = require('./routes/projects');
@@ -62,6 +65,14 @@ app.use(tenantMiddleware({
   baseDomain: process.env.BASE_DOMAIN || 'devx360.in',
   gistId: process.env.GIST_ID || null
 }));
+
+// Inject app config into all views
+app.use((req, res, next) => {
+  res.locals.app = getAppConfig();
+  res.locals.getSubdomainUrl = getSubdomainUrl;
+  res.locals.getBaseUrl = getBaseUrl;
+  next();
+});
 
 // =============================================================================
 // Routes
@@ -138,22 +149,25 @@ async function startServer() {
 
     // Start the server
     app.listen(PORT, () => {
+      const appConfig = getAppConfig();
+
       console.log('='.repeat(60));
-      console.log(`🚀 DevX360 Multi-Tenant Server Started`);
+      console.log(`🚀 ${appConfig.brandName} Multi-Tenant Server Started`);
       console.log('='.repeat(60));
       console.log(`📍 Port: ${PORT}`);
-      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`🏢 Base Domain: ${process.env.BASE_DOMAIN || 'devx360.in'}`);
+      console.log(`🌍 Environment: ${appConfig.nodeEnv}`);
+      console.log(`🏢 Base Domain: ${appConfig.baseDomain}`);
+      console.log(`🌐 Base URL: ${appConfig.baseUrl}`);
       console.log(`🔐 Admin API Key: ${process.env.ADMIN_API_KEY ? 'Configured' : 'Not configured (admin endpoints unprotected!)'}`);
       console.log('='.repeat(60));
       console.log(`\n📝 Available URLs:`);
-      console.log(`   Main site:          http://localhost:${PORT}`);
-      console.log(`   Healthcare demo:    http://healthcare.localhost:${PORT}`);
-      console.log(`   Jewelry demo:       http://jewelry.localhost:${PORT}`);
-      console.log(`   Real Estate demo:   http://realestate.localhost:${PORT}`);
-      console.log(`   Fashion demo:       http://fashion.localhost:${PORT}`);
-      console.log(`   Example client:     http://localhost:${PORT}/client/example-client`);
-      console.log(`   Admin login:        http://localhost:${PORT}/admin/login`);
+      console.log(`   Main site:          ${getBaseUrl()}`);
+      console.log(`   Healthcare demo:    ${getSubdomainUrl('healthcare')}`);
+      console.log(`   Jewelry demo:       ${getSubdomainUrl('jewelry')}`);
+      console.log(`   Real Estate demo:   ${getSubdomainUrl('realestate')}`);
+      console.log(`   Fashion demo:       ${getSubdomainUrl('fashion')}`);
+      console.log(`   Example client:     ${getSubdomainUrl('example-client')}`);
+      console.log(`   Admin login:        ${getBaseUrl()}/admin/login`);
       console.log('='.repeat(60));
     });
   } catch (error) {
