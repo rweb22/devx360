@@ -36,18 +36,6 @@ const PERMANENT_TENANTS = {
     enabled: true
   },
 
-  // Restaurant demo site
-  'restaurant': {
-    id: 'restaurant',
-    name: 'Tasty Bites Restaurant',
-    subdomain: 'restaurant',
-    type: 'demo',
-    theme: 'restaurant',
-    description: 'Modern restaurant ordering and reservation system',
-    features: ['Online ordering', 'Table reservations', 'Menu management', 'Delivery tracking'],
-    enabled: true
-  },
-
   // Healthcare demo site
   'healthcare': {
     id: 'healthcare',

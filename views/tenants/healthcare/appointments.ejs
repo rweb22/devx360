@@ -1,0 +1,94 @@
+<section style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 4rem 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 700;">Book an Appointment</h1>
+        <p style="font-size: 1.25rem; opacity: 0.95;">Schedule your visit with our expert physicians</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width: 800px;">
+        <div style="background: white; padding: 3rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+            <form style="display: grid; gap: 2rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">First Name *</label>
+                        <input type="text" required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Last Name *</label>
+                        <input type="text" required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Email *</label>
+                        <input type="email" required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Phone *</label>
+                        <input type="tel" required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Department *</label>
+                    <select required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="dermatology">Dermatology</option>
+                        <option value="internal">Internal Medicine</option>
+                        <option value="emergency">Emergency Medicine</option>
+                        <option value="general">General Practice</option>
+                    </select>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Preferred Date *</label>
+                        <input type="date" required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Preferred Time *</label>
+                        <select required style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                            <option value="">Select Time</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e293b;">Reason for Visit</label>
+                    <textarea rows="4" style="width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; font-family: inherit;" placeholder="Please describe your symptoms or reason for the appointment"></textarea>
+                </div>
+                
+                <div>
+                    <label style="display: flex; align-items: start; gap: 0.75rem; cursor: pointer;">
+                        <input type="checkbox" required style="margin-top: 0.25rem;">
+                        <span style="color: #64748b; font-size: 0.95rem;">I agree to the <a href="#" style="color: #0ea5e9;">Terms and Conditions</a> and <a href="#" style="color: #0ea5e9;">Privacy Policy</a></span>
+                    </label>
+                </div>
+                
+                <button type="submit" style="background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: white; padding: 1.25rem 2rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 1rem;" onclick="alert('This is a demo. In a real application, your appointment would be confirmed and you would receive a confirmation email!'); return false;">
+                    Confirm Appointment
+                </button>
+            </form>
+        </div>
+        
+        <div style="background: #e0f2fe; padding: 2rem; border-radius: 12px; margin-top: 3rem; text-align: center;">
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #1e293b;">Need Urgent Care?</h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">For immediate medical attention, call our 24/7 emergency line</p>
+            <a href="tel:+15559911" style="display: inline-block; background: #ef4444; color: white; padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                📞 Call Emergency: (555) 911-CARE
+            </a>
+        </div>
+    </div>
+</section>

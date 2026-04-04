@@ -144,11 +144,11 @@ function getGenericDemoData(tenant) {
 // Routes
 // =============================================================================
 
-// Helper to render with restaurant layout
-function renderRestaurant(res, page, title) {
-  res.app.render(`tenants/restaurant/${page}`, {}, (err, html) => {
+// Helper to render with healthcare layout
+function renderHealthcare(res, page, title) {
+  res.app.render(`tenants/healthcare/${page}`, {}, (err, html) => {
     if (err) return res.status(500).send(err.message);
-    res.render('tenants/restaurant/layout', {
+    res.render('tenants/healthcare/layout', {
       title,
       page,
       body: html,
@@ -157,25 +157,25 @@ function renderRestaurant(res, page, title) {
   });
 }
 
-// Restaurant routes
-router.get('/restaurant', (req, res) => {
-  renderRestaurant(res, 'home', 'Tasty Bites Restaurant | Home');
+// Healthcare routes
+router.get('/healthcare', (req, res) => {
+  renderHealthcare(res, 'home', 'MediCare Plus | Modern Healthcare Management');
 });
 
-router.get('/restaurant/menu', (req, res) => {
-  renderRestaurant(res, 'menu', 'Menu | Tasty Bites Restaurant');
+router.get('/healthcare/services', (req, res) => {
+  renderHealthcare(res, 'services', 'Our Services | MediCare Plus');
 });
 
-router.get('/restaurant/reservations', (req, res) => {
-  renderRestaurant(res, 'reservations', 'Reservations | Tasty Bites Restaurant');
+router.get('/healthcare/doctors', (req, res) => {
+  renderHealthcare(res, 'doctors', 'Our Doctors | MediCare Plus');
 });
 
-router.get('/restaurant/about', (req, res) => {
-  renderRestaurant(res, 'about', 'About Us | Tasty Bites Restaurant');
+router.get('/healthcare/appointments', (req, res) => {
+  renderHealthcare(res, 'appointments', 'Book Appointment | MediCare Plus');
 });
 
-router.get('/restaurant/contact', (req, res) => {
-  renderRestaurant(res, 'contact', 'Contact Us | Tasty Bites Restaurant');
+router.get('/healthcare/contact', (req, res) => {
+  renderHealthcare(res, 'contact', 'Contact Us | MediCare Plus');
 });
 
 // Home page for demo tenants (fallback for old single-page demos)
@@ -187,11 +187,7 @@ router.get('/', (req, res) => {
     return res.redirect('/');
   }
 
-  // Redirect to appropriate multi-page demo
-  if (tenant.theme === 'restaurant') {
-    return res.redirect('/restaurant');
-  }
-
+  // Redirect to healthcare demo for healthcare theme
   if (tenant.theme === 'healthcare') {
     return res.redirect('/healthcare');
   }
