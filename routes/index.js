@@ -36,6 +36,18 @@ router.get('/demos', (req, res) => {
   });
 });
 
+// Debug endpoint - check environment variables (TEMPORARY)
+router.get('/debug-env', (req, res) => {
+  res.json({
+    BRAND_NAME: process.env.BRAND_NAME || 'NOT SET',
+    BASE_DOMAIN: process.env.BASE_DOMAIN || 'NOT SET',
+    BASE_URL: process.env.BASE_URL || 'NOT SET',
+    NODE_ENV: process.env.NODE_ENV || 'NOT SET',
+    hasAppLocals: !!res.locals.app,
+    appBrandName: res.locals.app ? res.locals.app.brandName : 'NO APP LOCALS'
+  });
+});
+
 // Admin login page
 router.get('/admin/login', (req, res) => {
   res.render('pages/admin-login', {
