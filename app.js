@@ -74,8 +74,8 @@ app.use((req, res, next) => {
     return next();
   }
 
-  // If path starts with /healthcare, use tenant router
-  if (req.path.startsWith('/healthcare')) {
+  // If path starts with /healthcare or /jewelry, use tenant router
+  if (req.path.startsWith('/healthcare') || req.path.startsWith('/jewelry')) {
     return tenantRouter.handle(req, res, next);
   }
 

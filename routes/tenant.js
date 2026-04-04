@@ -111,6 +111,19 @@ function renderHealthcare(res, page, title) {
   });
 }
 
+// Helper to render with jewelry layout
+function renderJewelry(res, page, title) {
+  res.app.render(`tenants/jewelry/${page}`, {}, (err, html) => {
+    if (err) return res.status(500).send(err.message);
+    res.render('tenants/jewelry/layout', {
+      title,
+      page,
+      body: html,
+      layout: false
+    });
+  });
+}
+
 // Healthcare routes
 router.get('/healthcare', (req, res) => {
   renderHealthcare(res, 'home', 'MediCare Plus | Modern Healthcare Management');
@@ -132,6 +145,27 @@ router.get('/healthcare/contact', (req, res) => {
   renderHealthcare(res, 'contact', 'Contact Us | MediCare Plus');
 });
 
+// Jewelry routes
+router.get('/jewelry', (req, res) => {
+  renderJewelry(res, 'home', 'Lumière | Exquisite Fine Jewelry');
+});
+
+router.get('/jewelry/collections', (req, res) => {
+  renderJewelry(res, 'collections', 'Collections | Lumière');
+});
+
+router.get('/jewelry/engagement', (req, res) => {
+  renderJewelry(res, 'engagement', 'Engagement Rings | Lumière');
+});
+
+router.get('/jewelry/about', (req, res) => {
+  renderJewelry(res, 'about', 'About Us | Lumière');
+});
+
+router.get('/jewelry/contact', (req, res) => {
+  renderJewelry(res, 'contact', 'Contact | Lumière');
+});
+
 // Home page for demo tenants (fallback for old single-page demos)
 router.get('/', (req, res) => {
   const tenant = req.tenant;
@@ -141,9 +175,13 @@ router.get('/', (req, res) => {
     return res.redirect('/');
   }
 
-  // Redirect to healthcare demo for healthcare theme
+  // Redirect to appropriate multi-page demo based on theme
   if (tenant.theme === 'healthcare') {
     return res.redirect('/healthcare');
+  }
+
+  if (tenant.theme === 'jewelry') {
+    return res.redirect('/jewelry');
   }
 
   // Generic demo (temporary tenants)

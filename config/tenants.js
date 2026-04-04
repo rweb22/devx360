@@ -46,6 +46,18 @@ const PERMANENT_TENANTS = {
     description: 'Patient management and telemedicine platform',
     features: ['Appointment booking', 'Telemedicine', 'Patient records', 'Prescription management'],
     enabled: true
+  },
+
+  // Jewelry demo site
+  'jewelry': {
+    id: 'jewelry',
+    name: 'Lumière Jewelry',
+    subdomain: 'jewelry',
+    type: 'demo',
+    theme: 'jewelry',
+    description: 'Luxury fine jewelry e-commerce platform',
+    features: ['Online catalog', 'Engagement rings', 'Custom design', 'GIA certified diamonds'],
+    enabled: true
   }
 };
 

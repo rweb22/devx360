@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Playfair Display', Georgia, serif;
+            color: #2d2d2d;
+            line-height: 1.6;
+        }
+        
+        :root {
+            --jewelry-primary: #d4af37;
+            --jewelry-dark: #2d2d2d;
+            --jewelry-light: #f8f6f3;
+            --jewelry-accent: #c9a961;
+        }
+        
+        .jewelry-header {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background: var(--jewelry-dark);
+            color: white;
+            padding: 0.75rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .header-main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--jewelry-primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--jewelry-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--jewelry-primary);
+        }
+        
+        .nav-links a.active {
+            color: var(--jewelry-primary);
+            border-bottom: 2px solid var(--jewelry-primary);
+            padding-bottom: 0.25rem;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .jewelry-footer {
+            background: var(--jewelry-dark);
+            color: #b8b8b8;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--jewelry-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #b8b8b8;
+            text-decoration: none;
+            line-height: 2.5;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--jewelry-primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #3d3d3d;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="jewelry-header">
+        <div class="header-top">
+            ✨ Free Shipping on Orders Over $500 | Complimentary Gift Wrapping
+        </div>
+        <div class="header-main">
+            <a href="/jewelry" class="brand">💎 LUMIÈRE</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/jewelry" class="<%= page === 'home' ? 'active' : '' %>">Home</a></li>
+                    <li><a href="/jewelry/collections" class="<%= page === 'collections' ? 'active' : '' %>">Collections</a></li>
+                    <li><a href="/jewelry/engagement" class="<%= page === 'engagement' ? 'active' : '' %>">Engagement</a></li>
+                    <li><a href="/jewelry/about" class="<%= page === 'about' ? 'active' : '' %>">About</a></li>
+                    <li><a href="/jewelry/contact" class="<%= page === 'contact' ? 'active' : '' %>">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer class="jewelry-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>LUMIÈRE</h3>
+                    <p style="line-height: 1.8;">Exquisite fine jewelry crafted with passion and precision. Each piece tells a unique story of elegance and timeless beauty.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="/jewelry/collections">Rings</a></li>
+                        <li><a href="/jewelry/collections">Necklaces</a></li>
+                        <li><a href="/jewelry/collections">Bracelets</a></li>
+                        <li><a href="/jewelry/engagement">Engagement Rings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <ul>
+                        <li><a href="/jewelry/contact">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Jewelry Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li>📍 123 Luxury Avenue, New York</li>
+                        <li>📞 (555) 123-GEMS</li>
+                        <li>✉️ hello@lumiere-jewelry.demo</li>
+                        <li>🕐 Mon-Sat: 10AM - 8PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>🎯 This is a demo jewelry e-commerce platform created by <a href="https://devx360.in" style="color: var(--jewelry-primary);">DevX360</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
