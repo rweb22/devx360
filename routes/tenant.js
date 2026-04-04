@@ -6,6 +6,9 @@
 
 const express = require('express');
 const router = express.Router();
+const fs = require('fs');
+const path = require('path');
+const { getTenant, getEnabledClients, isClientEnabled } = require('../config/tenants');
 
 // =============================================================================
 // Healthcare Demo Data
@@ -217,19 +220,8 @@ router.get('/fashion/contact', preventCrossDemoAccess('fashion'), (req, res) => 
   renderFashion(res, 'contact', 'Contact | Élégance');
 });
 
-// Client-specific demo routes
-// Example client demo
-router.get('/client/example-client', (req, res) => {
-  renderClient(res, 'example-client', 'home', 'Example Client Demo | Home');
-});
-
-router.get('/client/example-client/features', (req, res) => {
-  renderClient(res, 'example-client', 'features', 'Features | Example Client');
-});
-
-router.get('/client/example-client/contact', (req, res) => {
-  renderClient(res, 'example-client', 'contact', 'Contact | Example Client');
-});
+// Client-specific demo routes are auto-discovered below
+// No need to manually add routes - just enable in config/tenants.js!
 
 // Home page for demo tenants - redirect to appropriate demo
 router.get('/', (req, res) => {
@@ -260,5 +252,71 @@ router.get('/', (req, res) => {
   // Unknown tenant - redirect to main site
   return res.redirect('/');
 });
+
+// =============================================================================
+// Auto-Discovery: Client Demo Routes
+// =============================================================================
+
+/**
+ * Automatically create routes for all enabled client demos
+ *
+ * This scans views/tenants/clients/{client}/ for .ejs files and creates routes
+ * No need to manually add routes - just enable in config/tenants.js!
+ */
+(function registerClientDemoRoutes() {
+  const enabledClients = getEnabledClients();
+  const clientsDir = path.join(__dirname, '../views/tenants/clients');
+
+  for (const [clientId, config] of Object.entries(enabledClients)) {
+    const clientDir = path.join(clientsDir, clientId);
+
+    // Check if client directory exists
+    if (!fs.existsSync(clientDir)) {
+      console.warn(`[Routes] Warning: Client directory not found: ${clientDir}`);
+      continue;
+    }
+
+    // Get all .ejs files in the client directory
+    let files;
+    try {
+      files = fs.readdirSync(clientDir).filter(file => file.endsWith('.ejs'));
+    } catch (error) {
+      console.error(`[Routes] Error reading client directory ${clientId}:`, error.message);
+      continue;
+    }
+
+    // Register routes for each page (except layout.ejs)
+    files.forEach(file => {
+      const pageName = file.replace('.ejs', '');
+
+      // Skip layout file
+      if (pageName === 'layout') return;
+
+      // Create route path
+      const routePath = pageName === 'home'
+        ? `/client/${clientId}`
+        : `/client/${clientId}/${pageName}`;
+
+      // Create page title
+      const pageTitle = pageName === 'home'
+        ? `${config.name} | Home`
+        : `${pageName.charAt(0).toUpperCase() + pageName.slice(1)} | ${config.name}`;
+
+      // Register the route
+      router.get(routePath, (req, res) => {
+        // Check if client is still enabled (safety check)
+        if (!isClientEnabled(clientId)) {
+          return res.status(404).send('Client demo not available');
+        }
+
+        renderClient(res, clientId, pageName, pageTitle);
+      });
+    });
+
+    console.log(`[Routes] ✓ Registered routes for client: ${clientId} (${files.length - 1} pages)`);
+  }
+
+  console.log(`[Routes] Client demo routes registered: ${Object.keys(enabledClients).length} client(s)`);
+})();
 
 module.exports = router;

@@ -83,6 +83,41 @@ const PERMANENT_TENANTS = {
   }
 };
 
+// =============================================================================
+// Client-Specific Demos (Enable/Disable Here)
+// =============================================================================
+
+/**
+ * Client demos configuration
+ *
+ * To add a new client:
+ * 1. Create folder: views/tenants/clients/{client-folder-name}/
+ * 2. Add your files: layout.ejs, home.ejs, etc.
+ * 3. Enable below with folder name and display name
+ *
+ * The system will automatically:
+ * - Create routes for all .ejs files (except layout.ejs)
+ * - Use layout.ejs as the wrapper
+ * - Make accessible at /client/{client-folder-name}
+ */
+const CLIENT_DEMOS = {
+  // Example client (keep as template)
+  'example-client': {
+    name: 'Example Client Demo',
+    enabled: true  // Set to false to disable
+  }
+
+  // Add your clients here:
+  // 'acmecorp': {
+  //   name: 'ACME Corporation',
+  //   enabled: true
+  // },
+  // 'techco': {
+  //   name: 'Tech Company',
+  //   enabled: true
+  // }
+};
+
 
 
 // =============================================================================
@@ -110,11 +145,42 @@ function getAllTenants() {
 }
 
 /**
+ * Get enabled client demos
+ * @returns {Object} Enabled client demos
+ */
+function getEnabledClients() {
+  const enabled = {};
+  for (const [clientId, config] of Object.entries(CLIENT_DEMOS)) {
+    if (config.enabled) {
+      enabled[clientId] = config;
+    }
+  }
+  return enabled;
+}
+
+/**
+ * Check if a client demo is enabled
+ * @param {string} clientId - Client folder name
+ * @returns {boolean}
+ */
+function isClientEnabled(clientId) {
+  return CLIENT_DEMOS[clientId] && CLIENT_DEMOS[clientId].enabled === true;
+}
+
+/**
  * Initialize tenant system
  */
 function initialize() {
   console.log('[Tenants] Initializing tenant system...');
-  console.log(`[Tenants] Loaded ${Object.keys(PERMANENT_TENANTS).length} tenant(s)`);
+  console.log(`[Tenants] Loaded ${Object.keys(PERMANENT_TENANTS).length} permanent demo(s)`);
+
+  const enabledClients = getEnabledClients();
+  console.log(`[Tenants] Loaded ${Object.keys(enabledClients).length} client demo(s)`);
+
+  if (Object.keys(enabledClients).length > 0) {
+    console.log(`[Tenants] Active clients: ${Object.keys(enabledClients).join(', ')}`);
+  }
+
   console.log('[Tenants] Tenant system initialized');
 }
 
@@ -126,5 +192,8 @@ module.exports = {
   initialize,
   getTenant,
   getAllTenants,
-  PERMANENT_TENANTS
+  getEnabledClients,
+  isClientEnabled,
+  PERMANENT_TENANTS,
+  CLIENT_DEMOS
 };
